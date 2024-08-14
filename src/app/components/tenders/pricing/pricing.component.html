@@ -1,0 +1,26 @@
+<div class="bids" *ngIf="tender">
+	<div class="box">Bids prices for Tender #{{tender.tenderNumber}}</div> 
+
+	<div class="pricing-table">
+		<div class="content">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Company</th>
+						<th>Duration</th>
+						<th>Price</th>
+						<th>Status</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="collapsed" *ngFor="let bid of bids;">
+						<td>{{ bid.user.company ? bid.user.company.name : 'NA' }}</td>
+						<td>{{ bid.durationInNumbers }}</td>
+						<td>{{ bid.priceInNumbers }}</td>
+						<td [class]="bid.status?.toLowerCase()">{{ bid.status }}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

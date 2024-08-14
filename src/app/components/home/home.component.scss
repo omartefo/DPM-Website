@@ -1,0 +1,197 @@
+.home {
+	.carousel {
+		background: #F8F9FD;
+		padding: 0 10rem 3rem;
+
+		padding-top: 4rem;
+		display: flex;
+		align-items: center;
+
+		@media screen and (max-width: 1000px) {
+			flex-direction: column;
+		}
+
+		@media screen and (max-width: 600px) {
+			padding: 0 6rem 3rem;
+		}
+
+		@media screen and (max-width: 500px) {
+			padding: 4rem 2rem 3rem;
+		}
+
+		.content {
+			flex: 0 0 55%;
+			margin-right: 8rem;
+
+			@media screen and (max-width: 1000px) {
+				order: 2;
+				margin-right: 0;
+			}	
+
+			.para {
+				color: #11142D;
+				font-weight: 500;
+				margin-bottom: 10rem;
+				font-family: 'El Messiri', sans-serif;
+
+				@media screen and (max-width: 500px) {
+					margin-bottom: 5rem;
+				}
+			}
+
+			.actions {
+				margin-left: 2rem;
+
+				@media screen and (max-width: 600px) {
+					margin-left: 0;
+					text-align: center;
+				}
+
+				.btn {
+					@media screen and (max-width: 400px) {
+						font-size: 1.3rem !important;
+					}
+				}
+		
+				.btn-primary {
+					background-color: var(--color-primary);
+					color: #fff;
+					border-radius: 4rem;
+					border: none;
+					padding: 1rem 2rem;
+					margin-right: 4rem;
+
+					@media screen and (max-width: 500px) {
+						margin-left: 2rem;
+					}
+				}
+		
+				.btn-watch {
+					border: 1px solid var(--color-primary);
+					padding: 1rem 2rem;
+					border-radius: 4rem;
+				}
+				
+				.play-icon {
+					margin-right: 1rem;
+					
+					@media screen and (max-width: 400px) {
+						width: 1.3rem;
+						margin-right: .5rem;
+					}
+				}
+			}
+		}
+
+		.image {
+			flex: 1;
+
+			@media screen and (max-width: 1000px) {
+				order: 1;
+				margin: 0 0 6rem 3rem;
+			}
+
+			img {
+				width: 100%;
+				mix-blend-mode: multiply;
+			}
+		}
+	}
+
+	.how_it_works {
+		display: flex;
+		background-color: #fff;
+		padding: 0 10rem;
+		margin-top: 10rem;
+
+		@media screen and (max-width: 1000px) {
+			flex-direction: column;
+		}
+
+		@media screen and (max-width: 600px) {
+			padding: 0 6rem;
+		}
+
+		@media screen and (max-width: 500px) {
+			padding: 0 2rem;
+		}
+
+		.content {
+			flex: 0 0 55%;
+			margin-right: 10rem;
+			direction: rtl;
+
+			@media screen and (max-width: 1000px) {
+				margin-right: 0;
+				margin-bottom: 4rem;
+			}
+
+			.how {
+				color: var(--color-primary);
+				margin-bottom: 2rem;
+			}
+
+			.item-card {
+				display: flex;
+				align-items: center;
+
+				box-shadow: 0px 7px 2.2rem rgba(143, 134, 196, 0.07);
+				border-radius: 2rem;
+				margin-bottom: 2rem;
+				padding: 1rem 2rem;
+
+				.item-number {
+					font-size: 3rem;
+					font-weight: 600;
+					padding: 1rem 2.5rem;
+					border-radius: 2rem;
+					margin-left: 2rem;
+				}
+
+				.item1 {
+					background-color: #F6EBFF;
+					color: #8E22E2;
+				}
+
+				.item2 {
+					background-color: #E7E9FF;
+					color: #2B3DC7;
+				}
+
+				.item3 {
+					background-color: #E9FFEF;
+					color: #3DCD65;
+				}
+			}
+
+			.card2 {
+				box-shadow: 0px 19px 29px rgba(62, 53, 120, 0.14);
+			}
+		}
+
+		.video {
+			flex: 1;
+
+			img {
+				width: 100%;
+			}
+		}
+	}
+
+	.heading-primary {
+		font-size: 5rem;
+		font-weight: 600;
+
+		color: #363848;
+		margin-bottom: 2rem;
+		font-family: 'El Messiri', sans-serif;
+
+		@media screen and (max-width: 600px) {
+			font-size: 4rem;
+		}
+
+		@media screen and (max-width: 400px) {
+			font-size: 3rem;
+		}
+	}
+}

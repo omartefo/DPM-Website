@@ -1,0 +1,46 @@
+<div class="profile" *ngIf="user">
+	<div class="basic-info">
+		<div class="circle" routerLink="/profile">
+			<img src="/assets/images/avatar.jpg" alt="avatar" class="avatar">
+		</div>
+
+		<div class="name">{{ user.name }}</div>
+		<div class="type">{{ user.type }}</div>
+
+		<div class="info-row">
+			<i class="material-icons">mail</i>
+			<div class="value">{{ user.email }}</div>
+		</div>
+
+		<div class="info-row">
+			<i class="material-icons">call</i>
+			<div class="value">+92 {{ user.mobileNumber }}</div>
+		</div>
+	</div>
+	
+	<div class="tabs-container">
+		<div class="tabs">
+			<div class="tab" [class.selected]="tab.selected" (click)="onTabSelect(tab)" *ngFor="let tab of tabs">{{ tab.title }}</div>
+		</div>
+
+		<div class="content">
+			<ng-container [ngSwitch]="selectedTab.name">
+				<ng-container *ngSwitchCase="'notifications'">
+					<app-notifications [inUserProfile]="true"></app-notifications>
+				</ng-container>
+
+				<ng-container *ngSwitchCase="'projects'">
+					<app-projects [inUserProfile]="true"></app-projects>
+				</ng-container>
+
+				<ng-container *ngSwitchCase="'download_center'">
+					<app-download-center [inUserProfile]="true"></app-download-center>
+				</ng-container>
+
+				<ng-container *ngSwitchCase="'tenders'">
+					<app-tenders-table></app-tenders-table>
+				</ng-container>
+			</ng-container>
+		</div>
+	</div>
+</div>

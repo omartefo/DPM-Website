@@ -1,0 +1,140 @@
+.offers {
+	margin-top: 10rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-family: 'El Messiri', sans-serif;
+
+	@media screen and (max-width: 600px) {
+		padding: 0 2rem;
+	}
+
+	.section-title {
+		width: 30%;
+		text-align: center;
+		margin-bottom: 4rem;
+
+		.heading {
+			font-size: 4rem;
+		}
+
+		@media screen and (max-width: 600px) {
+			width: 100%;
+		}	
+	}
+
+	.cards {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		@media screen and (max-width: 600px) {
+			flex-direction: column;
+			width: 100%;
+		}
+
+		.offer-card {
+			box-shadow: 0px 7px 22px rgba(143, 134, 196, 0.07);
+			border-radius: 1.5rem;
+			padding: 2rem;
+
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			flex: 0 0 30%;
+
+			&:hover {
+				box-shadow: 0px 19px 29px rgba(62, 53, 120, 0.14);
+			}
+
+			@media screen and (max-width: 600px) {
+				width: 70%;
+
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+
+			@media screen and (max-width: 400px) {
+				width: 95%;
+			}
+
+			.box {
+				display: inline-block;
+				text-align: center;
+				margin-bottom: 1.5rem;
+
+				img {
+					width: 10rem;
+				}
+			}
+
+			.team {
+				font-size: 1.4rem;
+				color: var(--color-primary);
+				margin-bottom: 2rem;
+			}
+
+			.item-row {
+				display: flex;
+				align-items: center;
+				margin-bottom: 1.5rem;
+
+				img {
+					width: 2.4rem;
+					margin-right: 2rem;
+				}
+			}
+
+			.value {
+				margin-right: 2rem;
+				color: #2E2E2E;
+			}
+
+			.duration, .view {
+				color: #A9A9A9;
+			}
+
+			.view {
+				border-bottom: 1px solid #A9A9A9;
+				cursor: pointer;
+				line-height: 1;
+			}
+
+			.btn-apply {
+				padding: 1.2rem 4rem;
+				border-radius: 3rem;
+				color: var(--color-primary);
+				background-color: #F0EEFF;
+
+				&:hover {
+					background-color: var(--color-primary);
+					color: #fff;
+				}
+			}
+
+			&:not(:last-child) {
+				margin-right: 4rem;
+
+				@media screen and (max-width: 600px) {
+					margin-right: 0;
+					margin-bottom: 4rem;
+				}
+			}
+		}
+
+		.card2 {
+			box-shadow: 0px 19px 29px rgba(62, 53, 120, 0.14);
+		}
+	}
+
+	.service-title {
+		font-size: 2.5rem;
+		margin: 2rem 0;
+	}
+
+	.para {
+		font-size: 1.4rem;
+	}
+}

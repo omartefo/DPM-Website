@@ -1,0 +1,12 @@
+.app-container {
+	font-size: 1.6rem;
+	height: 100vh;
+
+	.main {
+		margin-top: 9rem;
+
+		@media screen and (max-width: 500px) {
+			margin-top: 6rem;
+		}
+	}
+}

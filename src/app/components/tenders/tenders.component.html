@@ -1,0 +1,160 @@
+<div class="tenders">
+	<section class="tenders-logo-header">
+		<div class="content">
+			<h1 class="heading-primary">Find your Tender through <span class="fg-primary"> DPM</span> easily</h1>
+		</div>
+	
+		<div class="image">
+			<img src="/assets/images/tenders.png" alt="Tender">
+		</div>
+	</section>
+
+	<div class="generic-table">
+		<div class="header">
+			<div class="title-section">
+				<h2 class="mr-3 fg-primary title">Showing {{ totalRecords }} tenders </h2>
+				<div class="search-input-group">
+					<input class="search-field" type="text" placeholder="Search tender by number" [formControl]="searchFC">
+					<button class="btn btn-search">Search Tenders</button>
+				</div>
+			</div>
+		</div>
+	
+		<div class="content">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Tender Number</th>
+						<th>Type</th>
+						<th>Opening Date</th>
+						<th>Closing Date</th>
+						<th>Remaining time to close</th>
+						<th class="action-cell">Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="collapsed" *ngFor="let tender of tenders;">
+						<td class="tender-number">
+							<div>{{ tender.tenderNumber }}</div>
+							<div *ngIf="tender.awardedTo" class="awarded-to">{{ tender.status }}</div>
+						</td>
+	
+						<td>{{ tender.type }}</td>
+						<td>
+							<div>{{ tender.openingDate | date:'dd MMM YYYY' }}</div>
+							<div>{{ tender.openingDate | date:'hh:mm a' }}</div>
+						</td>
+						<td>
+							<div>{{ tender.closingDate | date:'dd MMM YYYY' }}</div>
+							<div>{{ tender.closingDate | date:'hh:mm a' }}</div>
+						</td>
+	
+						<td class="timer-cell fg-primary">
+							<span *ngIf="tender.remainingTime === 0">Tender is closed</span>
+							<span *ngIf="tender.remainingTime === -1">Tender is not started yet</span>
+							<div class="flex" *ngIf="tender.remainingTime !== 0 && tender.remainingTime !== -1">
+								<div class="flex flex-col">
+									<span class="timer-card"> {{ tender.days }} </span>
+									<span class="timer-label">Days</span>
+								</div>
+
+								<div class="flex flex-col">
+									<span class="timer-card"> {{ tender.hours }} </span>
+									<span class="timer-label">Hours</span>
+								</div>
+
+								<div class="flex flex-col">
+									<span class="timer-card"> {{ tender.minutes }} </span>
+									<span class="timer-label">Minutes</span>
+								</div>
+
+								<div class="flex flex-col">
+									<span class="timer-card"> {{ tender.seconds }} </span>
+									<span class="timer-label">Seconds</span>
+								</div>
+							</div>
+						</td>
+	
+						<td class="action-cell">
+							<button class="btn btn-enter-tender mr-3" 
+								(click)="onViewTenderDetails(tender)">Enter Tender
+							</button>
+						</td>
+					</tr>
+	
+					<tr *ngIf="tenders.length === 0;">
+						<td colspan="5">No tenders added yet.</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<div class="cards">
+				<div class="card" *ngFor="let tender of tenders">
+					<div class="items-row justify-center">
+						<div class="item">
+							<div class="label">Tender Number</div>
+							<div class="value text-center">{{ tender.tenderNumber }}</div>
+						</div>
+					</div>
+
+					<div class="items-row">
+						<div class="item">
+							<div class="label">Type</div>
+							<div class="value">{{ tender.type }}</div>
+						</div>
+
+						<div class="item">
+							<div class="label">Opening Date</div>
+							<div class="value">{{ tender.openingDate | date:'dd MMM YYYY' }}</div>
+						</div>
+					</div>
+
+					<div class="items-row">
+						<div class="item">
+							<div class="label">Closing Date</div>
+							<div class="value">{{ tender.closingDate | date:'dd MMM YYYY' }}</div>
+						</div>
+
+						<div class="item">
+							<div class="label text-right">Remaining Time</div>
+							
+							<div class="fg-primary">
+								<span *ngIf="tender.remainingTime === 0">Tender is closed</span>
+								<span *ngIf="tender.remainingTime === -1">Tender is not started yet</span>
+								<div class="flex" *ngIf="tender.remainingTime !== 0 && tender.remainingTime !== -1">
+									<div class="flex flex-col">
+										<span class="timer-card"> {{ tender.days }} </span>
+										<span class="timer-label">Days</span>
+									</div>
+	
+									<div class="flex flex-col">
+										<span class="timer-card"> {{ tender.hours }} </span>
+										<span class="timer-label">Hours</span>
+									</div>
+	
+									<div class="flex flex-col">
+										<span class="timer-card"> {{ tender.minutes }} </span>
+										<span class="timer-label">Minutes</span>
+									</div>
+	
+									<div class="flex flex-col">
+										<span class="timer-card"> {{ tender.seconds }} </span>
+										<span class="timer-label">Seconds</span>
+									</div>
+								</div>					
+							</div>
+						</div>
+					</div>
+
+					<div class="actions">
+						<button class="btn btn-enter-tender mr-3" 
+							(click)="onViewTenderDetails(tender)">Enter Tender
+						</button>
+					</div>
+				</div>
+			</div>
+	
+			<app-pagination [limit]="limit" [totalRecords]="totalRecords" (pageChange)="onPageChange($event)"></app-pagination>
+		</div>
+	</div>
+</div>

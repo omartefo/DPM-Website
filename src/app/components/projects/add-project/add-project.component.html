@@ -1,0 +1,43 @@
+<div class="add-project">
+	<div class="header">
+		<h2 class="mb-3">Add Project</h2>
+		<i class="material-icons pointer" (click)="onClose()">close</i>
+	</div>
+
+	<form [formGroup]="theForm" class="form">
+		<div class="form-group">
+			<label for="name">Project Name</label>
+			<input id="name" class="form-control" placeholder="Enter Project Name" formControlName="name">
+
+			<div class="alert alert-danger" *ngIf="theForm.get('name')?.touched && theForm.get('name')?.invalid">
+				<div *ngIf="theForm.get('name')?.hasError('required')">Project Name is required</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="name">Location</label>
+
+			<select name="location" id="location" formControlName="location">
+				<option [value]="loc" *ngFor="let loc of projectLocations">{{ loc }}</option>
+			</select>
+		</div>
+
+		<div class="form-group">
+			<label for="name">Type</label>
+
+			<select name="location" id="location" formControlName="type">
+				<option [value]="type" *ngFor="let type of projectTypes">{{ type }}</option>
+			</select>
+		</div>
+		
+		<div class="form-group">
+			<label for="name">Description</label>
+			<textarea id="description" class="form-control" placeholder="Description" formControlName="description"></textarea>
+		</div>
+
+	</form>
+
+	<div class="actions">
+		<button class="btn btn-primary" (click)="onSubmit()" [disabled]="theForm.invalid">Submit</button>
+	</div>
+</div>

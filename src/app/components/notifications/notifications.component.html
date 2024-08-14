@@ -1,0 +1,67 @@
+<div class="notifications">
+	<div class="box" *ngIf="!inUserProfile">Notifications</div>
+
+	<div class="generic-table" [class.in-profile]="inUserProfile">
+		<div class="header" *ngIf="notifications.length > 0 && !inUserProfile">
+			<div class="title-section">
+				<h2 class="mr-3 fg-primary title">Showing {{ totalRecords }} notifications </h2>
+				<div class="search-input-group">
+					<input class="search-field" type="text" placeholder="Search notification by type" [formControl]="searchFC">
+					<button class="btn btn-search">Search Notification</button>
+				</div>
+			</div>
+		</div>
+	
+		<div class="content">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Type</th>
+						<th>Content</th>
+						<th>Created At</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let rec of notifications;">
+						<td>{{ rec.type }}</td>
+						<td>{{ rec.content }}</td>
+						<td>{{ rec.createdAt | date:'medium' }}</td>
+					</tr>
+	
+					<tr *ngIf="notifications.length === 0;">
+						<td colspan="5">No notification received yet.</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<div class="cards">
+				<div class="card" *ngFor="let rec of notifications;">
+					<div class="items-row">
+						<div class="item">
+							<div class="label">Type</div>
+							<div class="value text-center">{{ rec.type }}</div>
+						</div>
+
+						<div class="item">
+							<div class="label">Created At</div>
+							<div class="value">{{ rec.createdAt | date:'medium' }}</div>
+						</div>
+					</div>
+
+					<div class="items-row justify-center">
+						<div class="item">
+							<div class="label text-center">Content</div>
+							<div class="value">{{ rec.content }}</div>
+						</div>
+					</div>
+				</div>
+
+				<div *ngIf="notifications.length === 0;">
+					No notification received yet.
+				</div>
+			</div>
+
+			<app-pagination [limit]="limit" [totalRecords]="totalRecords" (pageChange)="onPageChange($event)"></app-pagination>
+		</div>
+	</div>
+</div>

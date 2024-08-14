@@ -1,0 +1,19 @@
+.container {
+	padding: 10rem 0;
+
+	@media screen and (max-width: 600px) {
+		padding: 8rem;
+		text-align: center;
+	}
+
+	.success {
+		color: #0ba40b;
+		margin-bottom: 1rem;
+		font-size: 2.2rem;
+		font-weight: 600;
+	}
+
+	a {
+		text-decoration: none;
+	}
+}

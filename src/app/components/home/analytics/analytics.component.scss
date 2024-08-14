@@ -1,0 +1,47 @@
+.analytics {
+	margin-top: 10rem;
+	font-family: 'El Messiri', sans-serif;
+	display: flex;
+	justify-content: center;
+
+	@media screen and (max-width: 600px) {
+		padding: 0 2rem;
+	}
+
+	.content {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		padding: 4rem 8rem 0;
+		border-radius: 1rem;
+
+		background-color: var(--color-primary);
+		color: #fff;
+		width: 80%;
+
+		@media screen and (max-width: 600px) {
+			width: 100%;
+			padding: 2rem 2rem 0;
+		}
+
+		.box {
+			text-align: center;
+			margin-bottom: 4rem;
+
+			.value {
+				font-size: 5rem;
+				font-weight: 600;
+				margin-bottom: 2rem;
+
+				@media screen and (max-width: 600px) {
+					font-size: 3rem;
+					margin-bottom: 0;
+				}
+			}
+
+			.label {
+				font-size: 1.4rem;
+			}
+		}
+	}
+}

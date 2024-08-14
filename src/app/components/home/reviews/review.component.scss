@@ -1,0 +1,115 @@
+.reviews {
+	margin-top: 10rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-family: 'El Messiri', sans-serif;
+
+	@media screen and (max-width: 600px) {
+		padding: 0 2rem;
+	}
+
+	.section-title {
+		width: 30%;
+		text-align: center;
+		margin-bottom: 4rem;
+
+		.heading {
+			font-size: 4rem;
+		}
+
+		@media screen and (max-width: 600px) {
+			width: 100%;
+		}	
+	}
+
+	.review-container {
+		display: flex;
+		align-items: center;
+		padding: 0 15rem;
+
+		@media screen and (max-width: 1000px) {
+			flex-direction: column;
+		}
+
+		@media screen and (max-width: 670px) {
+			padding: 0 10rem;
+		}
+
+		@media screen and (max-width: 600px) {
+			padding: 0 2rem;
+		}
+
+		.customer-image-box {
+			position: relative;
+			margin-right: 5rem;
+
+			@media screen and (max-width: 1000px) {
+				margin: 5rem 0 4rem;
+			}
+		}
+
+		.review-image {
+			width: 25rem;
+		}
+
+		.review {
+			text-align: justify;
+		}
+
+		.name {
+			font-weight: 600;
+			margin-bottom: .5rem;
+		}
+
+		.designation {
+			@media screen and (max-width: 400px) {
+				font-size: 1.2rem;
+			}
+		}
+
+		.rating-container {
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: 3rem;
+
+			.star {
+				color: #FE8D4D;
+			}
+	
+			.un-star {
+				color: #D6D6D6;
+			}
+
+			.material-icons {
+				@media screen and (max-width: 450px) {
+					margin-right: -6px;
+				}
+			}
+
+			.rating {
+				@media screen and (max-width: 450px) {
+					margin-top: -3.5rem;
+				}
+			}
+
+			.rating-number {
+				font-size: 2.5rem;
+				font-weight: 600;
+				font-family: 'Poppins', sans-serif;
+				color: #363848;
+				margin-top: -1rem;
+			}
+		}
+	}
+	
+	.service-title {
+		font-size: 2.5rem;
+		margin: 2rem 0;
+	}
+
+	.para {
+		font-size: 1.4rem;
+	}
+}

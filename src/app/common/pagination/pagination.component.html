@@ -1,0 +1,19 @@
+<nav class="flex justify-center" *ngIf="pagesCount > 1">
+	<ul class="pagination">
+		<li class="page-item"><a class="page-link"
+			(click)="currentPage = currentPage - 1; onPageChange(currentPage)" 
+			[class.disabled]="currentPage === 1">Previous</a>
+		</li>
+
+		<li class="page-item" (click)="onPageChange(page)"
+			[class.active]="page === currentPage" 
+			*ngFor="let page of pages">
+			<a class="page-link">{{page}}</a>
+		</li>
+
+		<li class="page-item"><a class="page-link" 
+			(click)="currentPage = currentPage + 1; onPageChange(currentPage)" 
+			[class.disabled]="currentPage === pages.length">Next</a>
+		</li>
+	</ul>
+</nav>

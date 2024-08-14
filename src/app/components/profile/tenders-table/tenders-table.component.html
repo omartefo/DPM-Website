@@ -1,0 +1,68 @@
+<div class="generic-table">
+	<div class="content">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Tender Number</th>
+					<th>Type</th>
+					<th>Opening Date</th>
+					<th>Closing Date</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="collapsed" *ngFor="let tender of tenders;">
+					<td class="tender-number">
+						<div>{{ tender.tenderNumber }}</div>
+						<div *ngIf="tender.awardedTo" class="awarded-to">{{ tender.status }}</div>
+					</td>
+	
+					<td>{{ tender.type }}</td>
+					<td>
+						<div>{{ tender.openingDate | date:'dd MMM YYYY' }}</div>
+						<div>{{ tender.openingDate | date:'hh:mm a' }}</div>
+					</td>
+					<td>
+						<div>{{ tender.closingDate | date:'dd MMM YYYY' }}</div>
+						<div>{{ tender.closingDate | date:'hh:mm a' }}</div>
+					</td>
+				</tr>
+	
+				<tr *ngIf="tenders.length === 0;">
+					<td colspan="5">No tenders added yet.</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div class="cards">
+			<div class="card" *ngFor="let tender of tenders">
+				<div class="items-row">
+					<div class="item">
+						<div class="label">Tender Number</div>
+						<div class="value text-center">{{ tender.tenderNumber }}</div>
+					</div>
+
+					<div class="item">
+						<div class="label">Type</div>
+						<div class="value">{{ tender.type }}</div>
+					</div>
+				</div>
+
+				<div class="items-row">
+					<div class="item">
+						<div class="label">Opening Date</div>
+						<div class="value">{{ tender.openingDate | date:'dd MMM YYYY' }}</div>
+					</div>
+
+					<div class="item">
+						<div class="label">Closing Date</div>
+						<div class="value">{{ tender.closingDate | date:'dd MMM YYYY' }}</div>
+					</div>
+				</div>
+			</div>
+
+			<div *ngIf="tenders.length === 0;">
+				No participation yet.
+			</div>
+		</div>
+	</div>
+</div>

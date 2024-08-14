@@ -1,0 +1,79 @@
+<div class="contact-us" *ngIf="!message">
+	<h2>Contact Us</h2>
+	<p class="para">Any question or remarks? Just write a message!</p>
+
+	<div class="content">
+		<div class="banner">
+			<h3 class="title">Contact Information</h3>
+
+			<div class="contact-info">
+				<div class="info-row">
+					<i class="material-icons">call</i>
+					<div>+974 6666-9081</div>
+				</div>
+
+				<div class="info-row">
+					<i class="material-icons">mail</i>
+					<div>info@dpm.qa</div>
+				</div>
+				
+				<div class="info-row">
+					<i class="material-icons">map</i>
+					<div>Manaseer Signal, Building 316, First Floor Al Rayyan, opposite Aspire Zone Qatar</div>
+				</div>
+			</div>
+		</div>
+
+		<form [formGroup]="theForm" class="form">
+			<div class="form-group w-full">
+				<label for="name">Name</label>
+				<input type="text" id="name" formControlName="name">
+			</div>
+
+			<div class="fields">
+				<div class="form-group gap">
+					<label for="email">Email</label>
+					<input type="email" id="email" formControlName="email">
+				</div>
+
+				<div class="form-group">
+					<label for="phoneNumber">Phone Number</label>
+					<input type="text" id="phoneNumber" formControlName="phoneNumber">
+				</div>
+			</div>
+
+			<div class="form-group w-full">
+				<label for="subject">Subject</label>
+				<input type="text" id="subject" formControlName="subject">
+			</div>
+			
+			<div class="form-group w-full">
+				<label for="message">Message</label>
+				<textarea type="text" id="message" formControlName="message"></textarea>
+			</div>
+
+			<div class="form-actions">
+				<ng-container *ngTemplateOutlet="btnMessage"></ng-container>
+			</div>
+		</form>
+
+		<div class="actions">
+			<ng-container *ngTemplateOutlet="btnMessage"></ng-container>
+		</div>
+	</div>
+</div>
+
+<ng-template #btnMessage>
+	<button class="btn  btn-primary" (click)="onSendMessage()" [disabled]="theForm.invalid || disableBtn">
+		<span *ngIf="!disableBtn">Message</span>
+		<div class="flex" *ngIf="disableBtn">
+			<span class="spinner-border" role="status" aria-hidden="true"></span>
+			<span class="sr-only ml-3">submitting...</span>
+		</div>
+	</button>
+</ng-template>
+
+<div class="message-panel" *ngIf="message">
+	<h2>{{ message }}</h2>
+	<button class="btn-back" routerLink="/">Back</button>
+</div>

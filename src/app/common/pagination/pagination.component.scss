@@ -1,0 +1,12 @@
+.pagination {
+	margin-top: 3rem;
+	
+	.page-link {
+		font-size: 1.6rem;
+		cursor: pointer;
+	}
+
+	.disabled {
+		cursor: none;
+	}
+}

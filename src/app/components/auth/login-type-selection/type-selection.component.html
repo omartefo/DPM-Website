@@ -1,0 +1,20 @@
+<div class="login-selection">
+	<div class="heading">Welcome to DPM Tenders</div>
+
+	<div class="type-container">
+		<div class="cards">
+			<div class="user-type" *ngFor="let rec of loginTypes;">
+				<div class="box">
+					<img [src]="rec.image" [alt]="rec.type" class="user-type-image">
+				</div>
+
+				<div class="title" translate> {{ rec.type }}</div>
+
+				<div>
+					<button class="btn btn-login" (click)="onLogin(rec)">Login</button>
+					<button class="btn btn-register" (click)="onRegister(rec)">Register</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

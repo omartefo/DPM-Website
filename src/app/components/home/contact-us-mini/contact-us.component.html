@@ -1,0 +1,23 @@
+<section class="services">
+	<div class="section-title">
+		<h2 class="heading" translate>Contact_Us_Title</h2>
+		<p class="para" translate>Contact_Us_Description</p>
+	</div>
+
+	<form [formGroup]="theForm" class="form">
+		<input type="text" placeholder="Name" formControlName="name">
+		<input type="email" placeholder="Email" formControlName="email">
+		<input type="text" placeholder="Subject" formControlName="subject">
+		<textarea rows="6" type="text" placeholder="Message" formControlName="message"></textarea>
+
+		<div>
+			<button class="btn btn-send-message" (click)="onSendMessage()" [disabled]="theForm.invalid || disableBtn">
+				<span *ngIf="!disableBtn">Message</span>
+				<div class="flex" *ngIf="disableBtn">
+					<span class="spinner-border" role="status" aria-hidden="true"></span>
+					<span class="sr-only ml-3">submitting...</span>
+				</div>
+			</button>
+		</div>
+	</form>
+</section>

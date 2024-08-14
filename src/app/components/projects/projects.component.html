@@ -1,0 +1,111 @@
+<div class="projects">
+	<section class="projects-logo-header" *ngIf="!inUserProfile">
+		<div class="content">
+			<h1 class="heading-primary">Find your projects through <span class="fg-primary"> DPM</span> easily</h1>
+		</div>
+	
+		<div class="image">
+			<img src="/assets/images/tenders.png" alt="Project">
+		</div>
+	</section>
+
+	<div class="generic-table" [class.in-profile]="inUserProfile">
+		<div class="header" *ngIf="!inUserProfile">
+			<div class="title-section">
+				<h2 class="mr-3 fg-primary title">Showing {{ totalRecords }} projects </h2>
+
+				<div class="search-input-group">
+					<input class="search-field" type="text" placeholder="Search project by name" [formControl]="searchFC">
+					<button class="btn btn-search">Search projects</button>
+				</div>
+
+				<button class="btn btn-primary" (click)="createProject();">Create Project</button>
+			</div>
+		</div>
+	
+		<div class="content">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Project Number</th>
+						<th>Name</th>
+						<th>Location</th>
+						<th>Type</th>
+						<th>Description</th>
+						<th>Status</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="collapsed" *ngFor="let project of projects;">
+						<td>{{ project.projectId }}</td>
+						<td>{{ project.name }}</td>
+						<td>{{ project.location }}</td>
+						<td>{{ project.type }}</td>
+						<td>{{ project.description }}</td>
+						<td class="status-cell">
+							<div [ngClass]="project.isApproved ? 'approved' : 'pending'">
+								{{ project.isApproved ? 'Approved' : 'Not Approved' }}
+							</div>
+						</td>
+					</tr>
+	
+					<tr *ngIf="projects.length === 0;">
+						<td colspan="5">No projects added yet.</td>
+					</tr>
+				</tbody>
+			</table>
+	
+			<div class="cards">
+				<div class="card" *ngFor="let project of projects">
+					<div class="items-row justify-center">
+						<div class="item">
+							<div class="label">Tender Number</div>
+							<div class="value text-center">{{ project.projectId }}</div>
+						</div>
+					</div>
+
+					<div class="items-row">
+						<div class="item">
+							<div class="label">Name</div>
+							<div class="value">{{ project.name }}</div>
+						</div>
+
+						<div class="item">
+							<div class="label">Location</div>
+							<div class="value">{{ project.location }}</div>
+						</div>
+					</div>
+
+					<div class="items-row">
+						<div class="item">
+							<div class="label">Type</div>
+							<div class="value">{{ project.type }}</div>
+						</div>
+
+						<div class="item">
+							<div class="label">Description</div>
+							<div class="value">{{ project.description }}</div>
+						</div>
+					</div>
+
+					<div class="items-row justify-center">
+						<div class="item">
+							<div class="label">Status</div>
+							<div class="value text-center">
+								<div [ngClass]="project.isApproved ? 'approved' : 'pending'">
+									{{ project.isApproved ? 'Approved' : 'Not Approved' }}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div *ngIf="projects.length === 0;">
+					No projects added yet.
+				</div>
+			</div>
+			
+			<app-pagination [limit]="limit" [totalRecords]="totalRecords" (pageChange)="onPageChange($event)"></app-pagination>
+		</div>
+	</div>
+</div>

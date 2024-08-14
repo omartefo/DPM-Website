@@ -1,0 +1,50 @@
+<div class="login">
+	<div class="login-container">
+		<form [formGroup]="theForm" class="form">
+
+			<div class="flex justify-center">
+				<img src="/assets/images/logo-red.svg" class="top-logo" alt="DPM Logo">
+			</div>
+
+			<div class="form-group col">
+				<label for="email">Email</label>
+				<input id="email" type="email" class="form-control" placeholder="Enter Email" formControlName="email">
+
+				<div class="alert alert-danger" *ngIf="theForm.get('email')?.touched && theForm.get('email')?.invalid">
+					<div *ngIf="theForm.get('email')?.hasError('required')">Email is required</div>
+					<div *ngIf="theForm.get('email')?.hasError('email')">Email is invalid</div>
+				</div>
+			</div>
+
+			<div class="form-group col">
+				<label for="password">Password</label>
+				<input id="password" type="password" class="form-control" placeholder="Enter Password" formControlName="password">
+				<div class="alert alert-danger" *ngIf="theForm.get('password')?.touched && theForm.get('password')?.invalid">
+					<div *ngIf="theForm.get('password')?.hasError('required')">Password is required</div>
+				</div>
+			</div>
+
+			<div class="forgot-password">
+				<a routerLink="/forgot-password">Forgot password</a>
+			</div>
+			
+			<div class="actions">
+				<button class="btn" (click)="onLogin()" [disabled]="theForm.invalid || disableLoginBtn">
+					<span *ngIf="!disableLoginBtn">Login</span>
+					<div class="flex" *ngIf="disableLoginBtn">
+						<span class="spinner-border" role="status" aria-hidden="true"></span>
+						<span class="sr-only ml-3">Login...</span>
+					</div>
+				</button>
+			</div>
+
+			<div class="register">
+				Don't have an account? <a routerLink="/login-type">Sign Up</a>
+			</div>
+		</form>
+
+		<div class="box">
+			<img src="/assets/images/logo.svg" class="logo" alt="DPM Logo">
+		</div>
+	</div>
+</div>
