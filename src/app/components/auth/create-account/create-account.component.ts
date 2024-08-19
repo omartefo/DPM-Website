@@ -82,7 +82,7 @@ export class CreateAccountComponent implements OnInit, AfterViewInit {
 		this.disableGetOTPCodeBtn = true;
 		const payload = { mobileNumber: this.theForm.get('mobileNumber')?.value }
 
-		this.apiService.post('/users/getOTPCode', payload).subscribe({
+		this.apiService.post('/otpCodes/getOTPCode', payload).subscribe({
 			next: () => {
 				this.disableGetOTPCodeBtn = false;
 				this.isOTPCodeReceived = true;
@@ -98,7 +98,7 @@ export class CreateAccountComponent implements OnInit, AfterViewInit {
 		this.disableVerifyOTPCodeBtn = true;
 		const payload = { code, mobileNumber: this.theForm.get('mobileNumber')?.value };
 
-		this.apiService.post('/users/verifyOTPCode', payload).subscribe({
+		this.apiService.post('/otpCodes/verifyOTPCode', payload).subscribe({
 			next: () => {
 				this.isMobileVerified = true;
 				this.disableVerifyOTPCodeBtn;
