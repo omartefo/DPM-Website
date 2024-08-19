@@ -50,15 +50,15 @@
 								</div>
 		
 								<div>
-									<button class="btn btn-primary btn-otp mt-3 mr-3" *ngIf="theForm.get('mobileNumber')?.valid && !verificationCode" 
-										[disabled]="disableVerifyBtn" (click)="onOTPVerification()">OTP Verification
+									<button class="btn btn-primary btn-otp mt-3 mr-3" *ngIf="theForm.get('mobileNumber')?.valid && !isOTPCodeReceived" 
+										[disabled]="disableGetOTPCodeBtn" (click)="onOTPVerification()">OTP Verification
 									</button>
 		
-									<div class="d-flex mt-3" *ngIf="verificationCode && !isMobileVerified">
+									<div class="d-flex mt-3" *ngIf="isOTPCodeReceived && !isMobileVerified">
 										<input class="form-control verify-field" #code (keydown)="numericOnly($event)" placeholder="Code">
 										<small *ngIf="isMobileVerified" class="form-text text-danger">Invalid Verification Code.</small>
 										
-										<button class="btn btn-primary px-2 mr-3"  
+										<button [disabled]="disableVerifyOTPCodeBtn" class="btn btn-primary px-2 mr-3"  
 											(click)="onVerify(code.value)">Verify
 										</button>
 									</div>

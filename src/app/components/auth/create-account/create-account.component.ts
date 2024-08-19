@@ -18,9 +18,10 @@ export class CreateAccountComponent implements OnInit, AfterViewInit {
 
 	accountType: LoginAccountType = 'Client';
 	isMobileVerified = false;
-	verificationCode: number | null = null; 
+	isOTPCodeReceived = false;
 	theForm: FormGroup;
-	disableVerifyBtn = false;
+	disableGetOTPCodeBtn = false;
+	disableVerifyOTPCodeBtn = false;
 	disableSubmitBtn = false;
 	message: string = '';
 	private stepper!: Stepper;
@@ -34,7 +35,7 @@ export class CreateAccountComponent implements OnInit, AfterViewInit {
 
 		this.theForm = fb.group({
 			name: ['', [Validators.required]],
-			mobileNumber: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(8)]],
+			mobileNumber: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
 			email: ['', [Validators.required]],
 			password: ['', [Validators.required]],
 			confirmPassword: ['', [Validators.required]],
@@ -78,24 +79,35 @@ export class CreateAccountComponent implements OnInit, AfterViewInit {
     }
 
 	onOTPVerification(): void {
-		this.disableVerifyBtn = true;
-		const { mobileNumber } = this.theForm.value;
-		const payload = { mobileNumber: mobileNumber}
+		this.disableGetOTPCodeBtn = true;
+		const payload = { mobileNumber: this.theForm.get('mobileNumber')?.value }
 
-		this.apiService.post('/users/otpVerification', payload).subscribe({
-			next: (resp: any) => {
-				this.disableVerifyBtn = false;
-				this.verificationCode = resp.data.code;
+		this.apiService.post('/users/getOTPCode', payload).subscribe({
+			next: () => {
+				this.disableGetOTPCodeBtn = false;
+				this.isOTPCodeReceived = true;
 			},
 			error: (errorMessage: string) => {
-				this.disableVerifyBtn = false;
+				this.disableGetOTPCodeBtn = false;
 				this.toaster.error(errorMessage);
 			}
 		});
 	}
 
 	onVerify(code: string): void {
-		this.isMobileVerified = this.verificationCode === parseInt(code) ? true: false;
+		this.disableVerifyOTPCodeBtn = true;
+		const payload = { code, mobileNumber: this.theForm.get('mobileNumber')?.value };
+
+		this.apiService.post('/users/verifyOTPCode', payload).subscribe({
+			next: () => {
+				this.isMobileVerified = true;
+				this.disableVerifyOTPCodeBtn;
+			},
+			error: (errorMessage: string) => {
+				this.disableVerifyOTPCodeBtn = false;
+				this.toaster.error(errorMessage);
+			}
+		});
 	}
 
 	onSubmit(): void {
@@ -113,7 +125,6 @@ export class CreateAccountComponent implements OnInit, AfterViewInit {
 				this.disableSubmitBtn = false;
 
 				this.message = resp.message;
-				this.verificationCode = null;
 				this.isMobileVerified = false;
 				this.theForm.reset();
 			},
