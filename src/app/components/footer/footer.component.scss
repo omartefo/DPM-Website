@@ -1,7 +1,7 @@
 .footer {
 	background-color: var(--color-primary);
 	color: #fff;
-	padding: 5rem 10rem;
+	padding: 5rem 7rem;
 	font-size: 1.3rem;
 
 	@media screen and (max-width: 700px) {
@@ -13,6 +13,12 @@
 
 		@media screen and (max-width: 700px) {
 			flex-direction: column;
+		}
+	}
+
+	ul {
+		li {
+			cursor: pointer;
 		}
 	}
 	
@@ -32,8 +38,24 @@
 		}
 
 		.logo {
-			width: 14rem;
+			width: 8rem;
+		}
+
+		.logo-text {
+			display: flex;
+			color: #fff;
+			align-items: flex-end;
+			font-size: 1rem;
 			margin-bottom: 2rem;
+	
+			.text {
+				margin-right: 1rem;
+				text-align: right;
+	
+				.logo-text-ar {
+					letter-spacing: 1.34px;
+				}
+			}
 		}
 	}
 
@@ -42,6 +64,7 @@
 		display: flex;
 		justify-content: center;
 		margin-right: 10rem;
+		font-family: 'Roboto', sans-serif;
 
 		@media screen and (max-width: 960px) {
 			margin-right: 2rem;
@@ -87,6 +110,7 @@
 	background-color: #1F2131;
 	color: #fff;
 	padding: 2rem 10rem;
+	font-family: 'Roboto', sans-serif;
 
 	@media screen and (max-width: 700px) {
 		padding: 2rem;
