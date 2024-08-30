@@ -2,7 +2,7 @@
 	<div class="container-fluid h-100">
 		<div routerLink="/" class="logo-text">
 			<div class="text">
-				<div class="logo-text-en">Doha Project Management</div>
+				<div class="family-roboto">Doha Project Management</div>
 				<div class="logo-text-ar">الدوحة لادارة المشاريع</div>
 			</div>
 			<img src="/assets/images/logo.svg" class="logo" alt="DPM Logo">
@@ -25,15 +25,15 @@
 				</li>
 
 				<li class="nav-item" routerLink="projects" routerLinkActive="active" *ngIf="user && user.type === 'Client'">
-					<a class="nav-link">My Projects</a>
+					<a class="nav-link family-roboto">My Projects</a>
 				</li>
 
 				<li class="nav-item" routerLink="notifications" routerLinkActive="active" *ngIf="user">
-					<a class="nav-link">Notifications</a>
+					<a class="nav-link family-roboto">Notifications</a>
 				</li>
 
 				<li class="nav-item" routerLink="download_center" routerLinkActive="active" *ngIf="user && user.type !== 'Client'">
-					<a class="nav-link">Download Center</a>
+					<a class="nav-link family-roboto">Download Center</a>
 				</li>
 				
 				<li class="nav-item" routerLink="terms" routerLinkActive="active">
@@ -76,15 +76,15 @@
 			</li>
 
 			<li *ngIf="user && user.type === 'Client'">
-				<a class="nav-link" routerLink="projects">My projects</a>
+				<a class="nav-link family-roboto" routerLink="projects">My projects</a>
 			</li>
 
 			<li *ngIf="user">
-				<a class="nav-link" routerLink="notifications">Notifications</a>
+				<a class="nav-link family-roboto" routerLink="notifications">Notifications</a>
 			</li>
 
 			<li *ngIf="user && user.type !== 'Client'">
-				<a class="nav-link" routerLink="download_center">Download Center</a>
+				<a class="nav-link family-roboto" routerLink="download_center">Download Center</a>
 			</li>
 
 			<li>

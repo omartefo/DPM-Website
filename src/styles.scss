@@ -26,8 +26,11 @@ body {
 	min-height: 100vh;
 }
 
-
 // Utilities classes
+.family-roboto {
+	font-family: 'Roboto', sans-serif;
+}
+
 .fg-primary {
 	color: var(--color-primary);
 }
