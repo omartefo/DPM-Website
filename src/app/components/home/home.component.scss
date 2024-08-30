@@ -62,7 +62,7 @@
 				}
 		
 				.btn-watch {
-					border: 1px solid var(--color-primary);
+					border: 1px solid #e7e2dd;
 					padding: 1rem 2rem;
 					border-radius: 4rem;
 					font-weight: 600;
@@ -99,6 +99,9 @@
 		background-color: #fff;
 		padding: 0 10rem;
 		margin-top: 10rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 
 		@media screen and (max-width: 1000px) {
 			flex-direction: column;
@@ -113,8 +116,8 @@
 		}
 
 		.content {
-			flex: 0 0 55%;
-			margin-right: 10rem;
+			flex: 0 0 30%;
+			margin-right: 15rem;
 			direction: rtl;
 
 			@media screen and (max-width: 1000px) {
@@ -123,6 +126,7 @@
 			}
 
 			.how {
+				font-size: 2rem;
 				color: var(--color-primary);
 				margin-bottom: 2rem;
 			}
@@ -137,26 +141,20 @@
 				padding: 1rem 2rem;
 
 				.item-number {
-					font-size: 3rem;
+					font-size: 2.5rem;
 					font-weight: 600;
 					padding: 1rem 2.5rem;
 					border-radius: 2rem;
 					margin-left: 2rem;
+					background-color: var(--color-primary-light);
+
+					.fg-number {
+						color: #A66E4A;
+					}
 				}
 
-				.item1 {
-					background-color: #F6EBFF;
-					color: #8E22E2;
-				}
-
-				.item2 {
-					background-color: #E7E9FF;
-					color: #2B3DC7;
-				}
-
-				.item3 {
-					background-color: #E9FFEF;
-					color: #3DCD65;
+				.text {
+					font-weight: 600;
 				}
 			}
 
@@ -165,8 +163,8 @@
 			}
 		}
 
-		.video {
-			flex: 1;
+		.qatari-men-img {
+			width: 38%;
 
 			img {
 				width: 100%;
