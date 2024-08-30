@@ -1,6 +1,8 @@
-.bids {	
+.bids {
+	margin-top: 10rem;
+	
 	.box {
-		background-color: #363848;
+		background-color: var(--color-black);
 		color: #fff;
 		padding: 6rem 0;
 		text-align: center;

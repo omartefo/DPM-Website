@@ -54,6 +54,7 @@
 	.actions {
 		display: flex;
 		justify-content: center;
+		font-family: 'Cairo', 'Roboto', sans-serif;
 		
 		@media screen and (max-width: 800px) {
 			width: 70%;

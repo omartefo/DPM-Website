@@ -1,6 +1,6 @@
 <div class="bidding">
 	<div class="flex justify-center" *ngIf="!message">
-		<form [formGroup]="theForm" class="form">
+		<form [formGroup]="theForm" class="form family-roboto">
 			<h2 class="heading">Bidding Price and Duration</h2>
 	
 			<div class="form-group col-sm-5">
@@ -45,7 +45,7 @@
 	
 			<div class="actions">
 				<button class="btn" (click)="onPlaceBid()" [disabled]="theForm.invalid || disableSubmitBtn">
-					<span *ngIf="!disableSubmitBtn" translate>Place_Bid_Btn</span>
+					<span *ngIf="!disableSubmitBtn">تسعير</span>
 					<div class="flex" *ngIf="disableSubmitBtn">
 						<span class="spinner-border" role="status" aria-hidden="true"></span>
 						<span class="sr-only ml-3">submutting...</span>
@@ -57,6 +57,6 @@
 
 	<div class="message-panel" *ngIf="message">
 		<h2>{{ message }}</h2>
-		<button class="btn-back" routerLink="/tenders">Back</button>
+		<button class="btn-back" routerLink="/tenders">رجوع</button>
 	</div>
 </div>

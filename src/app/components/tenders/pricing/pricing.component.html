@@ -1,4 +1,4 @@
-<div class="bids" *ngIf="tender">
+<div class="bids family-roboto" *ngIf="tender">
 	<div class="box">Bids prices for Tender #{{tender.tenderNumber}}</div> 
 
 	<div class="pricing-table">
@@ -17,7 +17,7 @@
 						<td>{{ bid.user.company ? bid.user.company.name : 'NA' }}</td>
 						<td>{{ bid.durationInNumbers }}</td>
 						<td>{{ bid.priceInNumbers }}</td>
-						<td [class]="bid.status?.toLowerCase()">{{ bid.status }}</td>
+						<td [class]="bid.status?.toLowerCase()">{{ bid.status?.toString()?.replace('_', ' ') }}</td>
 					</tr>
 				</tbody>
 			</table>
