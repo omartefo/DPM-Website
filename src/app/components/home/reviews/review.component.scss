@@ -43,9 +43,17 @@
 		.customer-image-box {
 			position: relative;
 			margin-right: 5rem;
+			position: relative;
 
 			@media screen and (max-width: 1000px) {
 				margin: 5rem 0 4rem;
+			}
+
+			.quote-icon {
+				width: 5rem;
+				top: -30px;
+				left: 10px;
+				position: absolute;
 			}
 		}
 
