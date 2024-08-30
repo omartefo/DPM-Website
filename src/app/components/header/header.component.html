@@ -1,8 +1,12 @@
 <nav class="navbar navbar-expand-lg sticky">
 	<div class="container-fluid h-100">
-		<a routerLink="/">
+		<div routerLink="/" class="logo-text">
+			<div class="text">
+				<div class="logo-text-en">Doha Project Management</div>
+				<div class="logo-text-ar">الدوحة لادارة المشاريع</div>
+			</div>
 			<img src="/assets/images/logo.svg" class="logo" alt="DPM Logo">
-		</a>
+		</div>
 		
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 				data-bs-target="#navBar" aria-controls="navBar" aria-expanded="false" 
@@ -13,11 +17,11 @@
 		<div class="collapse navbar-collapse h-100" id="navBar">
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 				<li class="nav-item" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-					<a class="nav-link" translate>Header_Home</a>
+					<a class="nav-link">الرئيسية</a>
 				</li>
 
 				<li class="nav-item" routerLink="tenders" routerLinkActive="active" *ngIf="user">
-					<a class="nav-link" translate>Header_Browse_Tenders</a>
+					<a class="nav-link">المناقصة</a>
 				</li>
 
 				<li class="nav-item" routerLink="projects" routerLinkActive="active" *ngIf="user && user.type === 'Client'">
@@ -33,17 +37,18 @@
 				</li>
 				
 				<li class="nav-item" routerLink="terms" routerLinkActive="active">
-					<a class="nav-link" translate>Header_Terms_And_Conditions</a>
+					<a class="nav-link">الشروط و الاحكام</a>
 				</li>
 
 				<li class="nav-item" routerLink="contact_us" routerLinkActive="active">
-					<a class="nav-link" translate>Header_Contact_Us</a>
+					<a class="nav-link">تواصل معنا</a>
 				</li>
 			</ul>
 
 			<ul class="navbar-nav mb-2 mb-lg-0">
 				<li class="nav-item p-0" routerLink="login-type" *ngIf="!user; else loggedInUser">
-					<a class="nav-link btn-login" translate>Header_Login</a>
+					<a class="btn btn-login mr-8">دخول</a>
+					<a class="btn btn-register">حساب جديد</a>
 				</li>
 			</ul>
 		</div>
@@ -63,11 +68,11 @@
 	<nav class="mobile-nav" *ngIf="showMobMenu" (click)="toggleMenu()">
 		<ul>
 			<li>
-				<a class="nav-link" routerLink="/" translate>Header_Home</a>
+				<a class="nav-link" routerLink="/">الرئيسية</a>
 			</li>
 
 			<li *ngIf="user">
-				<a class="nav-link" routerLink="tenders" translate>Header_Browse_Tenders</a>
+				<a class="nav-link" routerLink="tenders">المناقصة</a>
 			</li>
 
 			<li *ngIf="user && user.type === 'Client'">
@@ -83,17 +88,17 @@
 			</li>
 
 			<li>
-				<a class="nav-link" routerLink="terms" translate>Header_Terms_And_Conditions</a>
+				<a class="nav-link" routerLink="terms">الشروط و الاحكام</a>
 			</li>
 
 			<li>
-				<a class="nav-link" routerLink="contact_us" translate>Header_Contact_Us</a>
+				<a class="nav-link" routerLink="contact_us">تواصل معنا</a>
 			</li>
 		</ul>
 
 		<ul class="navbar-nav mb-2 mb-lg-0">
 			<li routerLink="login-type" *ngIf="!user; else loggedInUser">
-				<a class="nav-link btn-login" translate>Header_Login</a>
+				<a class="btn btn-login">دخول</a>
 			</li>
 		</ul>
 	</nav>
@@ -103,7 +108,7 @@
 			<div class="circle" routerLink="/profile">
 				<img src="/assets/images/avatar.jpg" alt="avatar" class="avatar">
 			</div>
-			<a role="button" class="nav-link btn-logout" (click)="onLogout()" translate>Logout_Btn</a>
+			<a role="button" class="btn btn-logout" (click)="onLogout()">خروج</a>
 		</div>
 	</ng-template>
 </nav>

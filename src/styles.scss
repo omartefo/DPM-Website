@@ -9,6 +9,7 @@
 :root {
 	--color-primary: #AD8B6D;
 	--color-gray: #f5f5f5;
+	--color-black: #000;
 }
 
 html {
@@ -17,7 +18,7 @@ html {
 }
 
 body {
-	font-family: 'Poppins', sans-serif;
+	font-family: 'Cairo', 'Roboto', sans-serif;
 	font-weight: 400;
 	line-height: 1.6;
 	font-size: 1.6rem;

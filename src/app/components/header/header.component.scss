@@ -8,8 +8,28 @@
 		padding: 0 2rem;
 	}
 
+	.logo-text {
+		display: flex;
+		color: #fff;
+		align-items: flex-end;
+		font-size: 1rem;
+
+		.text {
+			margin-right: 1rem;
+			text-align: right;
+
+			.logo-text-ar {
+				letter-spacing: 1.34px;
+			}
+
+			.logo-text-en {
+				font-family: 'Roboto', sans-serif;
+			}
+		}
+	}
+
 	.logo {
-		width: 13rem;
+		width: 8rem;
 		height: auto;
 		margin-right: 5rem;
 
@@ -52,17 +72,27 @@
 		}
 	}
 
+	.btn {
+		padding: 0.5rem 2rem;
+		border-radius: 2rem;
+		color: #fff;
+	}
+
 	.btn-login {
 		background-color: #fff;
 		color: #000;
-		padding: 0.5rem 2rem;
-		border-radius: 2rem;
+	}
+
+	.btn-register {
+		background-color: var(--color-black);
 	}
 
 	.btn-logout {
-		background-color: #363848;
-		padding: 0.5rem 2rem;
-		border-radius: 2rem;
+		background-color: var(--color-black);
+	}
+
+	.mr-8 {
+		margin-right: 2rem;
 	}
 
 	.mobile-nav {
