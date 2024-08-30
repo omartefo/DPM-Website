@@ -16,6 +16,7 @@
 
 		.heading {
 			font-size: 4rem;
+			font-weight: 500;
 		}
 
 		@media screen and (max-width: 600px) {
@@ -69,6 +70,10 @@
 				}
 			}
 
+			.type {
+				font-weight: 600;
+			}
+
 			.team {
 				font-size: 1.4rem;
 				color: var(--color-primary);
@@ -81,7 +86,7 @@
 				margin-bottom: 1.5rem;
 
 				img {
-					width: 2.4rem;
+					width: 2rem;
 					margin-right: 2rem;
 				}
 			}
@@ -104,8 +109,8 @@
 			.btn-apply {
 				padding: 1.2rem 4rem;
 				border-radius: 3rem;
-				color: var(--color-primary);
-				background-color: #F0EEFF;
+				background-color: var(--color-primary-light);
+				color: #000;
 
 				&:hover {
 					background-color: var(--color-primary);
