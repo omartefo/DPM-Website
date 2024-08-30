@@ -1,11 +1,11 @@
 <div class="tenders">
 	<section class="tenders-logo-header">
 		<div class="content">
-			<h1 class="heading-primary">Find your Tender through <span class="fg-primary"> DPM</span> easily</h1>
+			<h1 class="heading-primary">تصفح المناقصة الالكتروني</h1>
 		</div>
 	
 		<div class="image">
-			<img src="/assets/images/tenders.png" alt="Tender">
+			<img src="/assets/images/tender_image.png" alt="Tender">
 		</div>
 	</section>
 
@@ -40,6 +40,7 @@
 						</td>
 	
 						<td>{{ tender.type }}</td>
+
 						<td>
 							<div>{{ tender.openingDate | date:'dd MMM YYYY' }}</div>
 							<div>{{ tender.openingDate | date:'hh:mm a' }}</div>
@@ -50,7 +51,7 @@
 						</td>
 	
 						<td class="timer-cell fg-primary">
-							<span *ngIf="tender.remainingTime === 0">Tender is closed</span>
+							<span class="tender-close-status" *ngIf="tender.remainingTime === 0">Tender is closed</span>
 							<span *ngIf="tender.remainingTime === -1">Tender is not started yet</span>
 							<div class="flex" *ngIf="tender.remainingTime !== 0 && tender.remainingTime !== -1">
 								<div class="flex flex-col">
