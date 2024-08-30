@@ -1,7 +1,6 @@
 import { UserInfo } from './../../models';
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -13,7 +12,7 @@ export class HeaderComponent {
 	user: UserInfo | null = null;
 	showMobMenu = false;
 
-	constructor(private authService: AuthService, private translateService: TranslateService) 
+	constructor(private authService: AuthService) 
 	{
 		this.authService.userInfo.subscribe(userInfo => {
 			this.user = userInfo;
@@ -26,10 +25,5 @@ export class HeaderComponent {
 
 	toggleMenu(): void {
 		this.showMobMenu = !this.showMobMenu;
-	}
-
-	changeLanguage(): void {
-		this.translateService.setDefaultLang('en');
-		this.translateService.use('en');
 	}
 }

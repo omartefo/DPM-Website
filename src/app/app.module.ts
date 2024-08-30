@@ -2,7 +2,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 // Routing module
@@ -46,13 +46,6 @@ import { TendersTableComponent } from './components/profile/tenders-table/tender
 import { DownloadCenterComponent } from './components/download-center/download-center.component';
 import { ForgotPasswordComponent } from './components/auth/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './components/auth/reset-password/reset-password.component';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-
-
-export function createTranslateLoader(http: HttpClient) {
-	return new TranslateHttpLoader(http, './assets/i18n/', '.json');
-}
 
 @NgModule({
   declarations: [
@@ -61,7 +54,7 @@ export function createTranslateLoader(http: HttpClient) {
     FooterComponent,
     LoginTypeSelectionComponent,
     TendersComponent,
-	ProjectsComponent,
+	  ProjectsComponent,
     ContactUsComponent,
     TermsComponent,
     LoginComponent,
@@ -84,32 +77,21 @@ export function createTranslateLoader(http: HttpClient) {
     TenderDetailComponent,
     NotificationsComponent,
     PaginationComponent,
-	ProfileComponent,
-	TendersTableComponent,
-	DownloadCenterComponent,
-	ForgotPasswordComponent,
-	ResetPasswordComponent
+    ProfileComponent,
+    TendersTableComponent,
+    DownloadCenterComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,
-	BrowserAnimationsModule,
+	  BrowserAnimationsModule,
     AppRoutingModule,
-	ReactiveFormsModule,
-	HttpClientModule,
-	ToastrModule.forRoot(),
-	ModalModule.forRoot(),
-	FileSaverModule,
-
-	TranslateModule.forRoot(
-		{
-		  loader: {
-			provide: TranslateLoader,
-			useFactory: (createTranslateLoader),
-			deps: [HttpClient]
-		  },
-		  defaultLanguage: 'ar'
-		}
-	),
+	  ReactiveFormsModule,
+    HttpClientModule,
+    ToastrModule.forRoot(),
+    ModalModule.forRoot(),
+    FileSaverModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
