@@ -34,7 +34,7 @@
 
 		.service-card {
 			direction: rtl;
-			width: 25%;
+			width: 20%;
 			box-shadow: 0px 7px 22px rgba(143, 134, 196, 0.07);
 			border-radius: 3rem;
 			padding: 2rem 4rem;
@@ -55,22 +55,11 @@
 				display: inline-block;
 				padding: 1.5rem;
 				border-radius: 1rem;
+				background-color: var(--color-primary-light);
 
 				img {
 					width: 3rem;
 				}
-			}
-
-			.box1 {
-				background-color: #FF754C;
-			}
-
-			.box2 {
-				background-color: #BF58D9;
-			}
-
-			.box3 {
-				background-color: #3BB2F4;
 			}
 
 			&:not(:last-child) {
@@ -91,9 +80,11 @@
 	.service-title {
 		font-size: 2.5rem;
 		margin: 2rem 0;
+		font-weight: 600;
 	}
 
 	.para {
 		font-size: 1.4rem;
+		font-weight: 500;
 	}
 }
