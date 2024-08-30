@@ -1,8 +1,8 @@
 .connect {
 	margin-top: 10rem;
-	background-color: #1F2131;
+	background-color: var(--color-black);
 	color: #fff;
-	padding: 8rem;
+	padding: 8rem 20rem;
 
 	@media screen and (max-width: 600px) {
 		padding: 4rem;
@@ -19,6 +19,8 @@
 
 	.content {
 		display: flex;
+		justify-content: space-between;
+		align-items: center;
 
 		@media screen and (max-width: 1100px) {
 			flex-direction: column;
@@ -26,8 +28,10 @@
 		}
 
 		.title {
-			margin-right: 10rem;
+			line-height: 1.7;
+			width: 55rem;
 			font-size: 3.5rem;
+			text-align: end;
 
 			@media screen and (max-width: 1100px) {
 				margin-right: 0;
@@ -41,7 +45,7 @@
 	
 		.input-field {
 			position: relative;
-			width: 50%;
+			width: 40%;
 	
 			@media screen and (max-width: 1100px) {
 				width: 70%;
@@ -52,12 +56,12 @@
 			}
 
 			input {
-				background-color: #1F2131;
-				border: 1px solid #363843;
+				background-color: var(--color-black);
+				border: 1px solid var(--color-primary-light);
 				padding: 1.5rem 2rem;
 				width: 100%;
 				border-radius: 3rem;
-				color: #fff;
+				color: var(--color-primary-light);
 				outline: none;
 
 				@media screen and (max-width: 500px) {
@@ -65,7 +69,7 @@
 				}
 
 				&::placeholder {
-					color: #fff;
+					color: var(--color-primary-light);;
 
 					@media screen and (max-width: 500px) {
 						font-size: 1.2rem;
@@ -79,7 +83,7 @@
 			right: 1rem;
 			top: 6px;
 	
-			background-color: #FE8D4D;
+			background-color: var(--color-primary);
 			border-radius: 3rem;
 			color: #fff;
 			padding: 1rem 5rem;
