@@ -76,13 +76,13 @@
 			}
 	
 			.btn-login {
-				background: #363843;
+				background: var(--color-black);
 				margin-right: 2rem;
 				color: #fff;
 			}
 	
 			.btn-register {
-				background: #9D3663;
+				background: var(--color-primary);
 				color: #fff;
 			}
 		}

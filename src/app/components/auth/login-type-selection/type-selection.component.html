@@ -8,7 +8,12 @@
 					<img [src]="rec.image" [alt]="rec.type" class="user-type-image">
 				</div>
 
-				<div class="title" translate> {{ rec.type }}</div>
+				<div class="title" [ngSwitch]="rec.type">
+					<div *ngSwitchCase="'Client'">عميل</div>
+					<div *ngSwitchCase="'Supplier'">شركة توريد</div>
+					<div *ngSwitchCase="'Consultant'">شركة مقاولة</div>
+					<div *ngSwitchCase="'Contractor'">مكتب استشاري</div>
+				</div>
 
 				<div>
 					<button class="btn btn-login" (click)="onLogin(rec)">Login</button>
