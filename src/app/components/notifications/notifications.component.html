@@ -1,5 +1,5 @@
-<div class="notifications">
-	<div class="box" *ngIf="!inUserProfile">Notifications</div>
+<div class="notifications family-roboto">
+	<div class="detail-page-upper-box" *ngIf="!inUserProfile">Your Notifications</div>
 
 	<div class="generic-table" [class.in-profile]="inUserProfile">
 		<div class="header" *ngIf="notifications.length > 0 && !inUserProfile">
