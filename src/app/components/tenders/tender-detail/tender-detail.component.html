@@ -32,7 +32,7 @@
 
 			<div class="item">
 				<div class="icon-box">
-					<img src="/assets/images/tender_icons/no_of_participants.png" alt="No of participants icon" class="icon">
+					<img src="/assets/images/tender_icons/no_of_applicants.png" alt="No of participants icon" class="icon">
 				</div>
 		
 				<div class="label">No of participants</div>
@@ -127,7 +127,7 @@
 				تسعير
 			</button>
 
-			<button class="btn btn-secondary mr-3" *ngIf="tender.remainingTime === 0 && tender.bid?.status" 
+			<button class="btn btn-primary mr-3" *ngIf="tender.remainingTime === 0 && tender.bid?.status" 
 				(click)="onViewPricing(tender)">قائمة الاسعار للمشاركين
 			</button>
 
