@@ -115,6 +115,24 @@ button, .btn {
 	letter-spacing: 2px;
 }
 
+.section-title {
+	width: 30%;
+	text-align: center;
+	margin-bottom: 4rem;
+
+	.heading {
+		font-size: 4rem;
+	}
+
+	@media screen and (max-width: 1100px) {
+		width: 50%;
+	}
+
+	@media screen and (max-width: 600px) {
+		width: 100%;
+	}	
+}
+
 .generic-table {
 	font-family: 'Roboto', sans-serif;
 	padding: 0 5rem 10rem;
