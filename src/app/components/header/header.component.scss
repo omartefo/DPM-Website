@@ -30,7 +30,7 @@
 		margin-right: 5rem;
 
 		@media screen and (max-width: 500px) {
-			width: 8rem;
+			width: 5rem;
 		}
 	}
 
@@ -143,4 +143,26 @@
 	z-index: 1;
 	background-color: var(--color-primary) !important;
 	width: 100%;
+}
+
+/* Force the navbar to collapse at 1150px */
+@media (max-width: 1150px) {
+    .navbar-expand-lg .navbar-collapse {
+        display: none !important; /* Hide the full navbar */
+    }
+
+    .navbar-expand-lg .navbar-toggler {
+        display: block; /* Show the hamburger icon */
+    }
+}
+
+/* Ensure the navbar is expanded above 1150px */
+@media (min-width: 1151px) {
+    .navbar-expand-lg .navbar-collapse {
+        display: flex !important; /* Show the full navbar */
+    }
+
+    .navbar-expand-lg .navbar-toggler {
+        display: none; /* Hide the hamburger icon */
+    }
 }
