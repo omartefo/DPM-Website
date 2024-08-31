@@ -18,20 +18,29 @@
 		}
 
 		.content {
-			flex: 0 0 30%;
+			flex: 0 0 35%;
 			margin-right: 15rem;
+
+			@media screen and (max-width: 1600px) {
+				flex: 0 0 40%;
+			}
+
+			@media screen and (max-width: 1440px) {
+				flex: 0 0 50%;
+			}
 
 			@media screen and (max-width: 1000px) {
 				order: 2;
 				margin-right: 0;
-			}	
+			}
 
 			.para {
+				text-align: center;
 				color: #11142D;
 				font-weight: 600;
 				margin-bottom: 10rem;
 
-				@media screen and (max-width: 500px) {
+				@media screen and (max-width: 600px) {
 					margin-bottom: 5rem;
 				}
 			}
@@ -40,14 +49,11 @@
 				@media screen and (max-width: 600px) {
 					margin-left: 0;
 					text-align: center;
+					display: flex;
+					align-items: center;
+					justify-content: center;
 				}
 
-				.btn {
-					@media screen and (max-width: 400px) {
-						font-size: 1.3rem !important;
-					}
-				}
-		
 				.btn-primary {
 					background-color: var(--color-primary);
 					color: #fff;
@@ -56,8 +62,10 @@
 					padding: 1rem 2rem;
 					margin-right: 4rem;
 
-					@media screen and (max-width: 500px) {
-						margin-left: 2rem;
+					@media screen and (max-width: 600px) {
+						margin: 0;
+						font-size: 1.2rem !important;
+						margin-right: 1rem;
 					}
 				}
 		
@@ -66,6 +74,14 @@
 					padding: 1rem 2rem;
 					border-radius: 4rem;
 					font-weight: 600;
+
+					@media screen and (max-width: 600px) {
+						font-size: 1.2rem !important;
+
+						img {
+							width: 1.4rem;
+						}
+					}
 				}
 				
 				.play-icon {
@@ -85,6 +101,10 @@
 			@media screen and (max-width: 1000px) {
 				order: 1;
 				margin: 0 0 6rem 3rem;
+			}
+
+			@media screen and (max-width: 600px) {
+				width: 80%;
 			}
 
 			img {
@@ -180,17 +200,14 @@
 	}
 
 	.heading-primary {
+		text-align: center;
 		font-size: 5rem;
 		font-weight: 600;
 		color: var(--color-primary);
 		margin-bottom: 2rem;
 
 		@media screen and (max-width: 600px) {
-			font-size: 4rem;
-		}
-
-		@media screen and (max-width: 400px) {
-			font-size: 3rem;
+			font-size: 3.5rem;
 		}
 	}
 }
