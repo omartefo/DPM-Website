@@ -7,6 +7,7 @@
 	<form [formGroup]="theForm" class="form">
 		<input type="text" placeholder="Name" formControlName="name">
 		<input type="email" placeholder="Email" formControlName="email">
+		<input type="text" id="phoneNumber" placeholder="Mobile Number" formControlName="phoneNumber" (keydown)="numericOnly($event)">
 		<input type="text" placeholder="Subject" formControlName="subject">
 		<textarea rows="6" type="text" placeholder="Message" formControlName="message"></textarea>
 
