@@ -17,11 +17,26 @@ export class ContactUsComponent {
 	{
 		this.theForm = fb.group({
 			name: ['', Validators.required],
-			email: ['', Validators.required],
+			email: ['', [Validators.required, Validators.email]],
 			phoneNumber: ['', Validators.required],
 			subject: ['', Validators.required],
 			message: ['', Validators.required],
 		});
+	}
+
+	numericOnly(ev: KeyboardEvent): boolean {
+		const allowedKeys = ['Backspace', 'ArrowLeft', 'ArrowRight', 'Tab'];
+		if (allowedKeys.includes(ev.key)) {
+			return true;
+		}
+	
+		const letters = /^[0-9]+$/;
+		const match = ev.key?.match(letters);
+		if (match) {
+			return match.length > 0;
+		}
+	
+		return false;
 	}
 
 	onSendMessage(): void {

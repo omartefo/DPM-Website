@@ -25,7 +25,7 @@ export class CreateAccountComponent implements OnInit, AfterViewInit {
 	disableVerifyOTPCodeBtn = false;
 	disableSubmitBtn = false;
 	message: string = '';
-	mobileNumberLength = UserConfig.mobileNumberLength;
+	mobileNumberLength: number = UserConfig.mobileNumberLength;
 	private stepper!: Stepper;
 
 	constructor(private route: ActivatedRoute,

@@ -38,7 +38,7 @@
 
 				<div class="form-group">
 					<label for="phoneNumber">Phone Number</label>
-					<input type="text" id="phoneNumber" formControlName="phoneNumber">
+					<input type="text" id="phoneNumber" formControlName="phoneNumber" (keydown)="numericOnly($event)">
 				</div>
 			</div>
 
