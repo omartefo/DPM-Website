@@ -41,6 +41,14 @@ export class TenderDetailComponent implements OnInit {
 		this.apiService.get(`/tenders/${this.tenderId}`).subscribe({
 			next: (resp: GenericApiResponse) => {
 				this.tender = resp.data.tender;
+				const documents = [];
+				const { document1, document2, document3 } = this.tender;
+
+				if (document1) documents.push(document1);
+				if (document2) documents.push(document2);
+				if (document3) documents.push(document3);
+
+				this.tender.documents = documents;
 
 				const tenderForBidding = this.user?.bids.find(bid => bid.tenderId === this.tender.tenderId);
 				if (tenderForBidding) {
@@ -138,16 +146,16 @@ export class TenderDetailComponent implements OnInit {
 
     getFileName = (path: string) => path.substring(path.lastIndexOf('/')+1);
 
-	onDownload(urls: string[]): void {
+	onDownload(): void {
 		const zip = new JSZip()
 		const folder = zip.folder('tender_files');
 
-		urls.forEach((url)=> {
-			const blobPromise = fetch(url).then(r => {
+		this.tender.documents.forEach((doc: string)=> {
+			const blobPromise = fetch(doc).then(r => {
 				if (r.status === 200) return r.blob()
 				return Promise.reject(new Error(r.statusText))
 			})
-			const name = url.substring(url.lastIndexOf('/'))
+			const name = doc.substring(doc.lastIndexOf('/'))
 			folder?.file(name, blobPromise)
 		})
 		

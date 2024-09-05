@@ -43,6 +43,9 @@ export interface Tender {
 	description: string;
 	projectId: number;
 	documents: any;
+	document1: string;
+	document2: string;
+	document3: string;
 	awardedTo: number;
 
 	days: number;
