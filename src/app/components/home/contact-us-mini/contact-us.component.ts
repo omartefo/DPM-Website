@@ -37,9 +37,9 @@ export class ContactUsMiniComponent {
 				this.theForm.reset();
 				this.toaster.success('Email sent successfully, admin will contact you soon.');
 			},
-			error: () => {
+			error: (error: any) => {
 				this.disableBtn = false;
-				console.log('Error sending email');
+				this.toaster.error(error);
 			}
 		})
 	}

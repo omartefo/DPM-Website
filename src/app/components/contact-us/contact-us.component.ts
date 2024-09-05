@@ -1,6 +1,7 @@
 import { ApiService } from 'src/app/services/api.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -13,7 +14,9 @@ export class ContactUsComponent {
 	message: string = '';
 	disableBtn = false;
 
-	constructor(private fb: FormBuilder, private apiService: ApiService) 
+	constructor(private fb: FormBuilder, 
+				private apiService: ApiService, 
+				private toaster: ToastrService) 
 	{
 		this.theForm = fb.group({
 			name: ['', Validators.required],
@@ -51,9 +54,9 @@ export class ContactUsComponent {
 				this.message = 'Email sent successfully, admin will contact you soon.';
 				this.scrollToTop();
 			},
-			error: () => {
+			error: (error: any) => {
 				this.disableBtn = false;
-				console.log('Error sending email');
+				this.toaster.error(error);
 			}
 		})
 	}
