@@ -41,6 +41,8 @@
 		
 				@media screen and (max-width: 400px) {
 					font-size: 3rem;
+					text-align: center;
+					margin-right: 0;
 				}
 			}
 		}
@@ -51,6 +53,11 @@
 			@media screen and (max-width: 1000px) {
 				order: 1;
 				margin: 0 0 6rem 3rem;
+			}
+
+			@media screen and (max-width: 400px) {
+				width: 25rem;
+				margin: 0 0 6rem 0;
 			}
 
 			img {

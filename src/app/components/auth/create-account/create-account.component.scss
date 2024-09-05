@@ -74,6 +74,10 @@
 	.verify-field {
 		width: 15%;
 		margin-right: 2rem;
+
+		@media screen and (max-width: 400px) {
+			width: 18%;
+		}
 	}
 
 	.actions {
