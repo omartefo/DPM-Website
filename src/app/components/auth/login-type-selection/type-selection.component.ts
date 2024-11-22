@@ -25,11 +25,11 @@ export class LoginTypeSelectionComponent {
 				image: '/assets/images/supplier.png',
 			},
 			{
-				type: 'Contractor',
+				type: 'Consultant',
 				image: '/assets/images/supplier.png',
 			},
 			{
-				type: 'Consultant',
+				type: 'Contractor',
 				image: '/assets/images/consultant.png',
 			},
 		]
