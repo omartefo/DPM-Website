@@ -1,4 +1,4 @@
-<div class="create-account">
+<div class="create-account family-roboto">
 	<div class="flex justify-center">
 		<h2 class="message" *ngIf="message">{{ message }}</h2>
 
@@ -45,8 +45,8 @@
 								<div class="alert alert-danger" 
 									*ngIf="theForm.get('mobileNumber')?.touched && theForm.get('mobileNumber')?.invalid">
 									<div *ngIf="theForm.get('mobileNumber')?.hasError('required')">Mobile Number is required</div>
-									<div *ngIf="theForm.get('mobileNumber')?.hasError('minlength')">Mobile Number should be 8 characters long</div>
-									<div *ngIf="theForm.get('mobileNumber')?.hasError('maxlength')">Mobile Number should be 8 characters long</div>
+									<div *ngIf="theForm.get('mobileNumber')?.hasError('minlength')">Mobile Number should be {{ mobileNumberLength }} characters long</div>
+									<div *ngIf="theForm.get('mobileNumber')?.hasError('maxlength')">Mobile Number should be {{ mobileNumberLength }} characters long</div>
 								</div>
 		
 								<div>

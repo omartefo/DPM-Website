@@ -2,7 +2,11 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding: 5rem 0 5rem;
+	padding: 5rem 1rem 5rem;
+
+	@media screen and (max-width: 400px) {
+		padding: 5rem 2rem 5rem;
+	}
 
 	.login-container {
 		display: flex;
@@ -10,12 +14,26 @@
 		align-items: center;
 		flex: 0 0 100%;
 		
-		.top-logo {
+		.logo-container {
 			display: none;
-
+			
+			justify-content: center;
+			align-items: flex-end;
+			margin-bottom: 2rem;
+	
 			@media screen and (max-width: 800px) {
-				display: block;
-				margin-bottom: 2rem;
+				display: flex;
+			}
+
+			.logo-text {
+				margin-right: 1rem;
+				text-align: right;
+				font-size: 1rem;
+	
+				.text-ar {
+					letter-spacing: 1.34px;
+					font-family: 'Cairo', sans-serif;
+				}
 			}
 		}
 
@@ -34,6 +52,10 @@
 
 			@media screen and (max-width: 600px) {
 				flex: 0 0 85%;
+			}
+
+			@media screen and (max-width: 400px) {
+				flex: 0 0 100%;
 			}
 
 			.heading {
@@ -103,6 +125,54 @@
 			@media screen and (max-width: 800px) {
 				display: none;
 			}
+		}
+	}
+
+	.d-shape {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		
+		width: 50rem;
+		height: 50rem;
+		background-color: var(--color-primary);
+		border-top-right-radius: 30rem;
+		border-bottom-right-radius: 30rem;
+		overflow: hidden;
+		position: relative;
+
+		@media screen and (max-width: 800px) {
+			display: none;
+		}
+
+		.logo-text {
+			margin-top: 1rem;
+			text-align: center;
+			display: flex;
+			flex-direction: column;
+
+			z-index: 1;
+			color: #fff;
+		}
+
+		img {
+			width: 10rem;
+			height: 10rem;
+			object-fit: cover;
+			z-index: 2;
+			position: relative;
+		}
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 30rem;
+			height: 100%;
+			background-color: var(--color-primary);
+			z-index: 1;
 		}
 	}
 }

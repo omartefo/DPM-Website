@@ -1,4 +1,6 @@
 .details-container {
+	font-family: 'Roboto', sans-serif;
+
 	.box {
 		color: #fff;
 		padding: 5rem 0;
@@ -7,9 +9,8 @@
 		font-weight: 600;
 		background-size: cover;
 		background-position: center;
-		background-image: url(/assets/images/tender_back_image.png);
-		box-shadow: inset 0 0 0 1000px rgb(254 141 77 / 60%);
-
+		background-image: url(/assets/images/tender_back_image.jpg);
+		
 		@media screen and (max-width: 500px) {
 			padding: 4rem 0;
 		}

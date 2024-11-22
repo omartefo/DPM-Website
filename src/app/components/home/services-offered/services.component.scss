@@ -9,21 +9,6 @@
 		padding: 0 2rem;
 	}
 
-	.section-title {
-		width: 30%;
-		text-align: center;
-		margin-bottom: 4rem;
-
-		.heading {
-			font-size: 4rem;
-			font-weight: 500;
-		}
-
-		@media screen and (max-width: 600px) {
-			width: 100%;
-		}	
-	}
-
 	.cards {
 		display: flex;
 		justify-content: center;
@@ -56,8 +41,8 @@
 				align-items: center;
 			}
 
-			@media screen and (max-width: 400px) {
-				width: 95%;
+			@media screen and (max-width: 500px) {
+				width: 100%;
 			}
 
 			.box {

@@ -12,7 +12,7 @@
 		flex-direction: column;
 		align-items: center;
 
-		background-color: var(--color-primary);
+		background-color: var(--color-black);
 		color: #fff;
 		border-radius: 4px;
 		padding: 0 6rem;
@@ -35,10 +35,10 @@
 		}
 
 		.circle {
-			border: 2px solid #FE8D4D;
+			border: 3px solid #42A5F5;
 			border-radius: 5rem;
 			margin-right: 2rem;
-			width: 10.4rem;
+			width: 106px;
 
 			margin: 4rem 0 2rem;
 		}
@@ -109,10 +109,9 @@
 			@media screen and (max-width: 600px) {
 				justify-content: center;
 			}
-	
 
 			.tab {
-				background: var(--color-primary);
+				background: var(--color-black);
 				color: #fff;
 				margin-right: 4rem;
 				padding: 1rem 3rem;
@@ -127,7 +126,7 @@
 			}
 	
 			.selected {
-				background-color: #FE8D4D;
+				background-color: var(--color-primary);;
 			}
 		}
 

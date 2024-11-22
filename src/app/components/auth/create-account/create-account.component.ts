@@ -6,6 +6,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { GenericApiResponse, LoginAccountType } from './../../../models';
 import { ToastrService } from 'ngx-toastr';
 import Stepper from 'bs-stepper';
+import { UserConfig } from 'src/app/common/constants/constants';
 
 
 @Component({
@@ -24,6 +25,7 @@ export class CreateAccountComponent implements OnInit, AfterViewInit {
 	disableVerifyOTPCodeBtn = false;
 	disableSubmitBtn = false;
 	message: string = '';
+	mobileNumberLength: number = UserConfig.mobileNumberLength;
 	private stepper!: Stepper;
 
 	constructor(private route: ActivatedRoute,
@@ -35,7 +37,11 @@ export class CreateAccountComponent implements OnInit, AfterViewInit {
 
 		this.theForm = fb.group({
 			name: ['', [Validators.required]],
-			mobileNumber: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
+			mobileNumber: ['', [
+				Validators.required,
+				Validators.minLength(this.mobileNumberLength),
+				Validators.maxLength(this.mobileNumberLength)
+			]],
 			email: ['', [Validators.required]],
 			password: ['', [Validators.required]],
 			confirmPassword: ['', [Validators.required]],

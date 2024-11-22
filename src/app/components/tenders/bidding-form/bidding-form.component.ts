@@ -43,7 +43,7 @@ export class BiddingFormComponent {
 			this.apiService.patch(`/bids/${this.biddingId}`, payload).subscribe({
 				next: () => {
 					this.disableSubmitBtn = false;
-					this.message = 'Thank you, your bid has been submitted.';
+					this.message = 'شكرًا لك على تقديم عرضك. لقد تم استلام عرض السعر بنجاح وسيتم مراجعته في أقرب وقت ممكن.';
 				},
 				error: (error) => {
 					this.disableSubmitBtn = false;
@@ -58,7 +58,7 @@ export class BiddingFormComponent {
 			this.apiService.post('/bids', payload).subscribe({
 				next: () => {
 					this.disableSubmitBtn = false;
-					this.message = 'Thank you, your bid has been submitted.';
+					this.message = 'شكرًا لك على تقديم عرضك. لقد تم استلام عرض السعر بنجاح وسيتم مراجعته في أقرب وقت ممكن.';
 				},
 				error: (error) => {
 					this.disableSubmitBtn = false;

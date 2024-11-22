@@ -1,12 +1,10 @@
 <div class="projects">
 	<section class="projects-logo-header" *ngIf="!inUserProfile">
 		<div class="content">
-			<h1 class="heading-primary">Find your projects through <span class="fg-primary"> DPM</span> easily</h1>
+			<h1 class="heading-primary">قائمة مشاريعك</h1>
 		</div>
 	
-		<div class="image">
-			<img src="/assets/images/tenders.png" alt="Project">
-		</div>
+		<img class="image" src="/assets/images/project_management.png" alt="Project">
 	</section>
 
 	<div class="generic-table" [class.in-profile]="inUserProfile">
@@ -59,13 +57,13 @@
 				<div class="card" *ngFor="let project of projects">
 					<div class="items-row justify-center">
 						<div class="item">
-							<div class="label">Tender Number</div>
+							<div class="label">Project Number</div>
 							<div class="value text-center">{{ project.projectId }}</div>
 						</div>
 					</div>
 
 					<div class="items-row">
-						<div class="item">
+						<div class="item mr-12">
 							<div class="label">Name</div>
 							<div class="value">{{ project.name }}</div>
 						</div>
@@ -77,7 +75,7 @@
 					</div>
 
 					<div class="items-row">
-						<div class="item">
+						<div class="item mr-12">
 							<div class="label">Type</div>
 							<div class="value">{{ project.type }}</div>
 						</div>

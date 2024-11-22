@@ -1,4 +1,4 @@
-<div class="contact-us" *ngIf="!message">
+<div class="contact-us family-roboto" *ngIf="!message">
 	<h2>Contact Us</h2>
 	<p class="para">Any question or remarks? Just write a message!</p>
 
@@ -9,17 +9,17 @@
 			<div class="contact-info">
 				<div class="info-row">
 					<i class="material-icons">call</i>
-					<div>+974 6666-9081</div>
+					<div>(974) 50678888</div>
 				</div>
 
 				<div class="info-row">
 					<i class="material-icons">mail</i>
-					<div>info@dpm.qa</div>
+					<div>Info@dohapm.qa</div>
 				</div>
 				
 				<div class="info-row">
 					<i class="material-icons">map</i>
-					<div>Manaseer Signal, Building 316, First Floor Al Rayyan, opposite Aspire Zone Qatar</div>
+					<div>Office 254, Twin Towers, Tower B, 25th Floor, Lusail Qatar</div>
 				</div>
 			</div>
 		</div>
@@ -38,7 +38,7 @@
 
 				<div class="form-group">
 					<label for="phoneNumber">Phone Number</label>
-					<input type="text" id="phoneNumber" formControlName="phoneNumber">
+					<input type="text" id="phoneNumber" formControlName="phoneNumber" (keydown)="numericOnly($event)">
 				</div>
 			</div>
 
@@ -64,7 +64,7 @@
 </div>
 
 <ng-template #btnMessage>
-	<button class="btn  btn-primary" (click)="onSendMessage()" [disabled]="theForm.invalid || disableBtn">
+	<button class="btn btn-primary" (click)="onSendMessage()" [disabled]="theForm.invalid || disableBtn">
 		<span *ngIf="!disableBtn">Message</span>
 		<div class="flex" *ngIf="disableBtn">
 			<span class="spinner-border" role="status" aria-hidden="true"></span>
@@ -75,5 +75,5 @@
 
 <div class="message-panel" *ngIf="message">
 	<h2>{{ message }}</h2>
-	<button class="btn-back" routerLink="/">Back</button>
+	<button class="btn-back" routerLink="/">رجوع</button>
 </div>

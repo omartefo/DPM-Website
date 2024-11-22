@@ -1,6 +1,7 @@
 import { ApiService } from 'src/app/services/api.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -13,15 +14,32 @@ export class ContactUsComponent {
 	message: string = '';
 	disableBtn = false;
 
-	constructor(private fb: FormBuilder, private apiService: ApiService) 
+	constructor(private fb: FormBuilder, 
+				private apiService: ApiService, 
+				private toaster: ToastrService) 
 	{
 		this.theForm = fb.group({
 			name: ['', Validators.required],
-			email: ['', Validators.required],
+			email: ['', [Validators.required, Validators.email]],
 			phoneNumber: ['', Validators.required],
 			subject: ['', Validators.required],
 			message: ['', Validators.required],
 		});
+	}
+
+	numericOnly(ev: KeyboardEvent): boolean {
+		const allowedKeys = ['Backspace', 'ArrowLeft', 'ArrowRight', 'Tab'];
+		if (allowedKeys.includes(ev.key)) {
+			return true;
+		}
+	
+		const letters = /^[0-9]+$/;
+		const match = ev.key?.match(letters);
+		if (match) {
+			return match.length > 0;
+		}
+	
+		return false;
 	}
 
 	onSendMessage(): void {
@@ -36,9 +54,9 @@ export class ContactUsComponent {
 				this.message = 'Email sent successfully, admin will contact you soon.';
 				this.scrollToTop();
 			},
-			error: () => {
+			error: (error: any) => {
 				this.disableBtn = false;
-				console.log('Error sending email');
+				this.toaster.error(error);
 			}
 		})
 	}
