@@ -1,7 +1,8 @@
-import { ApiService } from 'src/app/services/api.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { UserConfig } from 'src/app/common/constants/constants';
+import { ApiService } from 'src/app/services/api.service';
 
 
 @Component({
@@ -13,6 +14,9 @@ export class ContactUsComponent {
 	theForm: FormGroup;
 	message: string = '';
 	disableBtn = false;
+	contactNumber = UserConfig.contactNumber;
+	contactEmail = UserConfig.contactEmail;
+	contactAddress = UserConfig.contactAddress;
 
 	constructor(private fb: FormBuilder, 
 				private apiService: ApiService, 
