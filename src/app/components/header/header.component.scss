@@ -152,6 +152,17 @@
 	width: 100%;
 }
 
+.whatsapp-button {
+	display: flex;
+    align-items: center;
+    margin-right: 2rem;
+
+	img {
+		width: 35px;
+		height: 35px;
+	}
+}
+
 /* Force the navbar to collapse at 1150px */
 @media (max-width: 1150px) {
     .navbar-expand-lg .navbar-collapse {
