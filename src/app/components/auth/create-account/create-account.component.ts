@@ -130,7 +130,7 @@ export class CreateAccountComponent implements OnInit, AfterViewInit {
 			next: (resp: GenericApiResponse) => {
 				this.disableSubmitBtn = false;
 
-				this.message = resp.message;
+				this.message = 'لقد تم تسجيل حسابكم، نرجو الذهاب إلى بريدكم الإلكتروني لتحقق';
 				this.isMobileVerified = false;
 				this.theForm.reset();
 			},
