@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginType } from 'src/app/models';
-import { ApiService } from 'src/app/services/api.service';
 
 
 @Component({
@@ -12,8 +11,7 @@ import { ApiService } from 'src/app/services/api.service';
 export class LoginTypeSelectionComponent {
 	loginTypes: LoginType[];
 	
-	constructor(private apiService: ApiService, 
-				private router: Router) 
+	constructor(private router: Router) 
 	{
 		this.loginTypes = [
 			{
