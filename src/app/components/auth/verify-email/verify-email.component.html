@@ -1,6 +1,8 @@
 <div class="container family-roboto">
-	<div class="flex flex-col" *ngIf="isVerified">
-		<h2 class="success">Account Verified</h2>
-		<a routerLink="/login-type">Please login</a>
-	</div>
+  @if (isVerified) {
+    <div class="flex flex-col">
+      <h2 class="success">Account Verified</h2>
+      <a routerLink="/login-type">Please login</a>
+    </div>
+  }
 </div>

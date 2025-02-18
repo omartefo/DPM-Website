@@ -1,72 +1,69 @@
 <div class="downloads family-roboto">
-	<div class="detail-page-upper-box" *ngIf="!inUserProfile">Download Center</div>
+  @if (!inUserProfile) {
+    <div class="detail-page-upper-box">Download Center</div>
+  }
 
-	<div class="generic-table" [class.in-profile]="inUserProfile">
-		<div class="content">
-			<table class="table">
-				<thead>
-					<tr>
-						<th>Documents</th>
-						<th>Description</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr class="collapsed" *ngFor="let rec of downloads;">
-						<td>
-							<ng-container 
-								*ngIf="rec.documents.length === 1; then singleDoc else multipleDocs">
-							</ng-container>
-							
-							<ng-template #singleDoc>
-								<a [href]="rec.documents[0]" download>download</a>
-							</ng-template>
+  <div class="generic-table" [class.in-profile]="inUserProfile">
+    <div class="content">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Documents</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (rec of downloads; track rec) {
+            <tr class="collapsed">
+              <td>
+                @if (rec.documents.length === 1) {
+                  <a [href]="rec.documents[0]" download>download</a>
+                } @else {
+                  <a class="underlined pointer" (click)="onDownload(rec.documents)">download</a>
+                }
+              </td>
+              <td>{{ rec.description }}</td>
+            </tr>
+          }
 
-							<ng-template #multipleDocs>
-								<a class="underlined pointer" (click)="onDownload(rec.documents)">download</a>
-							</ng-template>
-						</td>
-						<td>{{ rec.description }}</td>
-					</tr>
-		
-					<tr *ngIf="downloads.length === 0;">
-						<td colspan="5">No downloads available.</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
+          @if (downloads.length === 0;) {
+            <tr>
+              <td colspan="5">No downloads available.</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
 
-		<div class="cards">
-			<div class="card" *ngFor="let rec of downloads;">
-				<div class="items-row">
-					<div class="item">
-						<div class="label">Documents ({{rec.documents.length}})</div>
-						<div class="value">
-							<ng-container 
-								*ngIf="rec.documents.length === 1; then singleDoc else multipleDocs">
-							</ng-container>
-							
-							<ng-template #singleDoc>
-								<a [href]="rec.documents[0]" download>download</a>
-							</ng-template>
+    <div class="cards">
+      @for (rec of downloads; track rec) {
+        <div class="card">
+          <div class="items-row">
+            <div class="item">
+              <div class="label">Documents ({{rec.documents.length}})</div>
+              <div class="value">
+                @if (rec.documents.length === 1) {
+                  <a [href]="rec.documents[0]" download>download</a>
+                } @else {
+                  <a class="underlined pointer" (click)="onDownload(rec.documents)">download</a>
+                }
+              </div>
+            </div>
+          </div>
+          <div class="items-row">
+            <div class="item">
+              <div class="label">Description</div>
+              <div class="value">{{ rec.description }}</div>
+            </div>
+          </div>
+        </div>
+      }
 
-							<ng-template #multipleDocs>
-								<a class="underlined pointer" (click)="onDownload(rec.documents)">download</a>
-							</ng-template>
-						</div>
-					</div>
-				</div>
-
-				<div class="items-row">
-					<div class="item">
-						<div class="label">Description</div>
-						<div class="value">{{ rec.description }}</div>
-					</div>
-				</div>
-			</div>
-
-			<div *ngIf="downloads.length === 0;">
-				No downloads available.
-			</div>
-		</div>
-	</div>
+      @if (downloads.length === 0;) {
+        <div>
+          No downloads available.
+        </div>
+      }
+    </div>
+  </div>
 </div>

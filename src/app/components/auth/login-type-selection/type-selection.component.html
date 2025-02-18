@@ -1,25 +1,35 @@
 <div class="login-selection">
-	<div class="heading">Welcome to DPM Tenders</div>
+  <div class="heading">Welcome to DPM Tenders</div>
 
-	<div class="type-container">
-		<div class="cards">
-			<div class="user-type" *ngFor="let rec of loginTypes;">
-				<div class="box">
-					<img [src]="rec.image" [alt]="rec.type" class="user-type-image">
-				</div>
-
-				<div class="title" [ngSwitch]="rec.type">
-					<div *ngSwitchCase="'Client'">عميل</div>
-					<div *ngSwitchCase="'Supplier'">شركة توريد</div>
-					<div *ngSwitchCase="'Contractor'">شركة مقاولة</div>
-					<div *ngSwitchCase="'Consultant'">مكتب استشاري</div>
-				</div>
-
-				<div>
-					<button class="btn btn-login" (click)="onLogin(rec)">Login</button>
-					<button class="btn btn-register" (click)="onRegister(rec)">Register</button>
-				</div>
-			</div>
-		</div>
-	</div>
+  <div class="type-container">
+    <div class="cards">
+      @for (rec of loginTypes; track rec) {
+        <div class="user-type">
+          <div class="box">
+            <img [src]="rec.image" [alt]="rec.type" class="user-type-image">
+          </div>
+          <div class="title">
+            @switch (rec.type) {
+              @case ('Client') {
+                <div>عميل</div>
+              }
+              @case ('Supplier') {
+                <div>شركة توريد</div>
+              }
+              @case ('Contractor') {
+                <div>شركة مقاولة</div>
+              }
+              @case ('Consultant') {
+                <div>مكتب استشاري</div>
+              }
+            }
+          </div>
+          <div>
+            <button class="btn btn-login" (click)="onLogin(rec)">Login</button>
+            <button class="btn btn-register" (click)="onRegister(rec)">Register</button>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
 </div>

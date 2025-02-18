@@ -1,190 +1,235 @@
 <div class="create-account family-roboto">
-	<div class="flex justify-center">
-		<h2 class="message" *ngIf="message">{{ message }}</h2>
+  <div class="flex justify-center">
+    @if (message) {
+      <h2 class="message">{{ message }}</h2>
+    }
 
-		<div #stepper class="bs-stepper" [class.hide-stepper]="message">
-			<div *ngIf="!message">
-				<div class="bs-stepper-header">
-					<div class="step" data-target="#test-l-1">
-						<button class="step-trigger">
-							<span class="bs-stepper-circle">1</span>
-							<span class="bs-stepper-label">Otp Verification</span>
-						</button>
-					</div>
-	
-					<div class="line"></div>
-	
-					<div class="step" data-target="#test-l-2">
-						<button class="step-trigger">
-							<span class="bs-stepper-circle">2</span>
-							<span class="bs-stepper-label">Email and Password</span>
-						</button>
-					</div>
-				</div>
-	
-				<div class="bs-stepper-content">
-					<form [formGroup]="theForm" class="form">
-						<div id="test-l-1" class="content flex flex-col col-sm-4">
-							<div class="form-group w-full">
-								<label for="name">Name</label>
-								<input id="name" type="text" class="form-control" placeholder="Enter Name" formControlName="name">
-								<div class="alert alert-danger" 
-									*ngIf="theForm.get('name')?.touched && theForm.get('name')?.invalid">
-									<div *ngIf="theForm.get('name')?.hasError('required')">Name is required</div>
-								</div>
-							</div>
-		
-							<div class="form-group w-full d-flex flex-column">
-								<label for="mobile_number">Mobile Number</label>
-								<input [readonly]="isMobileVerified" id="mobile_number" type="text" class="form-control" 
-									(keydown)="numericOnly($event)" placeholder="Enter Mobile number" formControlName="mobileNumber">
-		
-								<small *ngIf="!isMobileVerified" class="form-text text-muted">No need of initial 974</small>
-								<small *ngIf="isMobileVerified" class="form-text text-success">Mobile Number Verified.</small>
-		
-								<div class="alert alert-danger" 
-									*ngIf="theForm.get('mobileNumber')?.touched && theForm.get('mobileNumber')?.invalid">
-									<div *ngIf="theForm.get('mobileNumber')?.hasError('required')">Mobile Number is required</div>
-									<div *ngIf="theForm.get('mobileNumber')?.hasError('minlength')">Mobile Number should be {{ mobileNumberLength }} characters long</div>
-									<div *ngIf="theForm.get('mobileNumber')?.hasError('maxlength')">Mobile Number should be {{ mobileNumberLength }} characters long</div>
-								</div>
-		
-								<div>
-									<button class="btn btn-primary btn-otp mt-3 mr-3" *ngIf="theForm.get('mobileNumber')?.valid && !isOTPCodeReceived" 
-										[disabled]="disableGetOTPCodeBtn" (click)="onOTPVerification()">OTP Verification
-									</button>
-		
-									<div class="d-flex mt-3" *ngIf="isOTPCodeReceived && !isMobileVerified">
-										<input class="form-control verify-field" #code (keydown)="numericOnly($event)" placeholder="Code">
-										<small *ngIf="isMobileVerified" class="form-text text-danger">Invalid Verification Code.</small>
-										
-										<button [disabled]="disableVerifyOTPCodeBtn" class="btn btn-primary px-2 mr-3"  
-											(click)="onVerify(code.value)">Verify
-										</button>
-									</div>
-	
-									<button class="btn btn-primary mt-3" *ngIf="isMobileVerified"
-										[disabled]="theForm.get('name')?.invalid || !isMobileVerified" (click)="onNext()">Next
-									</button>
-								</div>
-							</div>
-						</div>
-		
-						<div id="test-l-2" class="content">
-							<div class="row col-sm-12">
-								<div class="form-group">
-									<label for="email">Email</label>
-									<input id="email" type="email" class="form-control" placeholder="Enter Email" formControlName="email">
-				
-									<div class="alert alert-danger"
-										*ngIf="theForm.get('email')?.touched && theForm.get('email')?.invalid">
-										<div *ngIf="theForm.get('email')?.hasError('required')">Email is required</div>
-										<div *ngIf="theForm.get('email')?.hasError('email')">Email is invalid</div>
-									</div>
-								</div>
-				
-								<div class="form-group">
-									<label for="password">Password</label>
-									<input id="password" type="password" class="form-control" placeholder="Enter Password" formControlName="password">
-									<div class="alert alert-danger" 
-										*ngIf="theForm.get('password')?.touched && theForm.get('password')?.invalid">
-										<div *ngIf="theForm.get('password')?.hasError('required')">Password is required</div>
-									</div>
-								</div>
-							</div>
-				
-							<div class="row col-sm-12">
-								<div class="form-group">
-									<label for="confirm_password">Confirm Password</label>
-									<input id="confirm_password" type="password" class="form-control" placeholder="Enter Confirm Password" formControlName="confirmPassword">
-				
-									<div class="alert alert-danger" 
-										*ngIf="theForm.get('confirmPassword')?.touched && theForm.get('confirmPassword')?.invalid">
-										<div *ngIf="theForm.get('confirmPassword')?.hasError('required')">Confirm Password is required</div>
-										<div *ngIf="theForm.get('confirmPassword')?.hasError('matching')">Password and confirmPassword are not matched</div>
-									</div>
-								</div>
-							</div>
-		
-							<div class="flex flex-column" *ngIf="accountType != 'Client'">
-								<label class="mb-3 mt-3">
-									<span class="company-label">Company Info</span>
-								</label>
-		
-								<div class="row col-sm-12">
-									<div class="form-group">
-										<label for="companyName">Company Name</label>
-										<input id="companyName" class="form-control" placeholder="Enter Company Name" formControlName="companyName">
-					
-										<div class="alert alert-danger" 
-											*ngIf="theForm.get('companyName')?.touched && theForm.get('companyName')?.invalid">
-											<div *ngIf="theForm.get('companyName')?.hasError('required')">Company Name is required</div>
-										</div>
-									</div>
-					
-									<div class="form-group">
-										<label for="crNumber">Commercial Registration No:</label>
-										<input id="crNumber" class="form-control" placeholder="Enter Commercial Registration No (CR):" formControlName="commercialRegNumber">
-										<div class="alert alert-danger" 
-											*ngIf="theForm.get('commercialRegNumber')?.touched && theForm.get('commercialRegNumber')?.invalid">
-											<div *ngIf="theForm.get('commercialRegNumber')?.hasError('required')">Commercial Registration No (CR) is required</div>
-										</div>
-									</div>
-								</div>
-				
-								<div class="row col-sm-12">
-									<div class="form-group">
-										<label for="address">Address</label>
-										<input id="address" class="form-control" placeholder="Enter Address" formControlName="address">
-										<div class="alert alert-danger" 
-											*ngIf="theForm.get('Address')?.touched && theForm.get('Address')?.invalid">
-											<div *ngIf="theForm.get('Address')?.hasError('required')">Address is required</div>
-										</div>
-									</div>
-					
-									<div class="form-group">
-										<label for="totalEmployees">Total number of employees</label>
-										<input id="totalEmployees" class="form-control" placeholder="Enter total number of employees" 
-											(keydown)="numericOnly($event)" formControlName="totalEmployees">
-										<div class="alert alert-danger" 
-											*ngIf="theForm.get('totalEmployees')?.touched && theForm.get('totalEmployees')?.invalid">
-											<div *ngIf="theForm.get('totalEmployees')?.hasError('required')">Total number of employees is required</div>
-										</div>
-									</div>
-								</div>
-				
-								<div class="row col-sm-12">
-									<div class="form-group w-full">
-										<label for="documents">Upload Company Documents (Optional)</label>
-										<input id="documents" type="file" class="form-control" placeholder="Enter Confirm Password" formControlName="documents">
-					
-										<div class="alert alert-danger" *ngIf="theForm.get('documents')?.touched && theForm.get('documents')?.invalid">
-											<div *ngIf="theForm.get('documents')?.hasError('required')">documents are required</div>
-										</div>
-									</div>
-								</div>
-							</div>
-		
-							<div class="form-check">
-								<input class="form-check-input" type="checkbox" value="" id="acceptTerms" formControlName="termsAndConditions">
-								<label class="form-check-label" for="acceptTerms">
-									Accept terms and conditions
-								</label>
-							</div>
-		
-							<div class="actions">
-								<button class="btn" (click)="onSubmit()" [disabled]="theForm.invalid || disableSubmitBtn">
-									<span *ngIf="!disableSubmitBtn">Submit</span>
-									<div class="flex" *ngIf="disableSubmitBtn">
-										<span class="spinner-border" role="status" aria-hidden="true"></span>
-										<span class="sr-only ml-3">submutting...</span>
-									</div>
-								</button>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div #stepper class="bs-stepper" [class.hide-stepper]="message">
+      @if (!message) {
+        <div>
+          <div class="bs-stepper-header">
+            <div class="step" data-target="#test-l-1">
+              <button class="step-trigger">
+                <span class="bs-stepper-circle">1</span>
+                <span class="bs-stepper-label">Otp Verification</span>
+              </button>
+            </div>
+            <div class="line"></div>
+            <div class="step" data-target="#test-l-2">
+              <button class="step-trigger">
+                <span class="bs-stepper-circle">2</span>
+                <span class="bs-stepper-label">Email and Password</span>
+              </button>
+            </div>
+          </div>
+          <div class="bs-stepper-content">
+            <form [formGroup]="theForm" class="form">
+              <div id="test-l-1" class="content flex flex-col col-sm-4">
+                <div class="form-group w-full">
+                  <label for="name">Name</label>
+                  <input id="name" type="text" class="form-control" placeholder="Enter Name" formControlName="name">
+                  @if (theForm.get('name')?.touched && theForm.get('name')?.invalid) {
+                    <div class="alert alert-danger"
+                      >
+                      @if (theForm.get('name')?.hasError('required')) {
+                        <div>Name is required</div>
+                      }
+                    </div>
+                  }
+                </div>
+                <div class="form-group w-full d-flex flex-column">
+                  <label for="mobile_number">Mobile Number</label>
+                  <input [readonly]="isMobileVerified" id="mobile_number" type="text" class="form-control"
+                    (keydown)="numericOnly($event)" placeholder="Enter Mobile number" formControlName="mobileNumber">
+                  @if (!isMobileVerified) {
+                    <small class="form-text text-muted">No need of initial 974</small>
+                  }
+                  @if (isMobileVerified) {
+                    <small class="form-text text-success">Mobile Number Verified.</small>
+                  }
+                  @if (theForm.get('mobileNumber')?.touched && theForm.get('mobileNumber')?.invalid) {
+                    <div class="alert alert-danger"
+                      >
+                      @if (theForm.get('mobileNumber')?.hasError('required')) {
+                        <div>Mobile Number is required</div>
+                      }
+                      @if (theForm.get('mobileNumber')?.hasError('minlength')) {
+                        <div>Mobile Number should be {{ mobileNumberLength }} characters long</div>
+                      }
+                      @if (theForm.get('mobileNumber')?.hasError('maxlength')) {
+                        <div>Mobile Number should be {{ mobileNumberLength }} characters long</div>
+                      }
+                    </div>
+                  }
+                  <div>
+                    @if (theForm.get('mobileNumber')?.valid && !isOTPCodeReceived) {
+                      <button class="btn btn-primary btn-otp mt-3 mr-3"
+                        [disabled]="disableGetOTPCodeBtn" (click)="onOTPVerification()">OTP Verification
+                      </button>
+                    }
+                    @if (isOTPCodeReceived && !isMobileVerified) {
+                      <div class="d-flex mt-3">
+                        <input class="form-control verify-field" #code (keydown)="numericOnly($event)" placeholder="Code">
+                        @if (isMobileVerified) {
+                          <small class="form-text text-danger">Invalid Verification Code.</small>
+                        }
+                        <button [disabled]="disableVerifyOTPCodeBtn" class="btn btn-primary px-2 mr-3"
+                          (click)="onVerify(code.value)">Verify
+                        </button>
+                      </div>
+                    }
+                    @if (isMobileVerified) {
+                      <button class="btn btn-primary mt-3"
+                        [disabled]="theForm.get('name')?.invalid || !isMobileVerified" (click)="onNext()">Next
+                      </button>
+                    }
+                  </div>
+                </div>
+              </div>
+              <div id="test-l-2" class="content">
+                <div class="row col-sm-12">
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input id="email" type="email" class="form-control" placeholder="Enter Email" formControlName="email">
+                    @if (theForm.get('email')?.touched && theForm.get('email')?.invalid) {
+                      <div class="alert alert-danger"
+                        >
+                        @if (theForm.get('email')?.hasError('required')) {
+                          <div>Email is required</div>
+                        }
+                        @if (theForm.get('email')?.hasError('email')) {
+                          <div>Email is invalid</div>
+                        }
+                      </div>
+                    }
+                  </div>
+                  <div class="form-group">
+                    <label for="password">Password</label>
+                    <input id="password" type="password" class="form-control" placeholder="Enter Password" formControlName="password">
+                    @if (theForm.get('password')?.touched && theForm.get('password')?.invalid) {
+                      <div class="alert alert-danger"
+                        >
+                        @if (theForm.get('password')?.hasError('required')) {
+                          <div>Password is required</div>
+                        }
+                      </div>
+                    }
+                  </div>
+                </div>
+                <div class="row col-sm-12">
+                  <div class="form-group">
+                    <label for="confirm_password">Confirm Password</label>
+                    <input id="confirm_password" type="password" class="form-control" placeholder="Enter Confirm Password" formControlName="confirmPassword">
+                    @if (theForm.get('confirmPassword')?.touched && theForm.get('confirmPassword')?.invalid) {
+                      <div class="alert alert-danger"
+                        >
+                        @if (theForm.get('confirmPassword')?.hasError('required')) {
+                          <div>Confirm Password is required</div>
+                        }
+                        @if (theForm.get('confirmPassword')?.hasError('matching')) {
+                          <div>Password and confirmPassword are not matched</div>
+                        }
+                      </div>
+                    }
+                  </div>
+                </div>
+                @if (accountType != 'Client') {
+                  <div class="flex flex-column">
+                    <label class="mb-3 mt-3">
+                      <span class="company-label">Company Info</span>
+                    </label>
+                    <div class="row col-sm-12">
+                      <div class="form-group">
+                        <label for="companyName">Company Name</label>
+                        <input id="companyName" class="form-control" placeholder="Enter Company Name" formControlName="companyName">
+                        @if (theForm.get('companyName')?.touched && theForm.get('companyName')?.invalid) {
+                          <div class="alert alert-danger"
+                            >
+                            @if (theForm.get('companyName')?.hasError('required')) {
+                              <div>Company Name is required</div>
+                            }
+                          </div>
+                        }
+                      </div>
+                      <div class="form-group">
+                        <label for="crNumber">Commercial Registration No:</label>
+                        <input id="crNumber" class="form-control" placeholder="Enter Commercial Registration No (CR):" formControlName="commercialRegNumber">
+                        @if (theForm.get('commercialRegNumber')?.touched && theForm.get('commercialRegNumber')?.invalid) {
+                          <div class="alert alert-danger"
+                            >
+                            @if (theForm.get('commercialRegNumber')?.hasError('required')) {
+                              <div>Commercial Registration No (CR) is required</div>
+                            }
+                          </div>
+                        }
+                      </div>
+                    </div>
+                    <div class="row col-sm-12">
+                      <div class="form-group">
+                        <label for="address">Address</label>
+                        <input id="address" class="form-control" placeholder="Enter Address" formControlName="address">
+                        @if (theForm.get('Address')?.touched && theForm.get('Address')?.invalid) {
+                          <div class="alert alert-danger"
+                            >
+                            @if (theForm.get('Address')?.hasError('required')) {
+                              <div>Address is required</div>
+                            }
+                          </div>
+                        }
+                      </div>
+                      <div class="form-group">
+                        <label for="totalEmployees">Total number of employees</label>
+                        <input id="totalEmployees" class="form-control" placeholder="Enter total number of employees"
+                          (keydown)="numericOnly($event)" formControlName="totalEmployees">
+                        @if (theForm.get('totalEmployees')?.touched && theForm.get('totalEmployees')?.invalid) {
+                          <div class="alert alert-danger"
+                            >
+                            @if (theForm.get('totalEmployees')?.hasError('required')) {
+                              <div>Total number of employees is required</div>
+                            }
+                          </div>
+                        }
+                      </div>
+                    </div>
+                    <div class="row col-sm-12">
+                      <div class="form-group w-full">
+                        <label for="documents">Upload Company Documents (Optional)</label>
+                        <input id="documents" type="file" class="form-control" placeholder="Enter Confirm Password" formControlName="documents">
+                        @if (theForm.get('documents')?.touched && theForm.get('documents')?.invalid) {
+                          <div class="alert alert-danger">
+                            @if (theForm.get('documents')?.hasError('required')) {
+                              <div>documents are required</div>
+                            }
+                          </div>
+                        }
+                      </div>
+                    </div>
+                  </div>
+                }
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="acceptTerms" formControlName="termsAndConditions">
+                  <label class="form-check-label" for="acceptTerms">
+                    Accept terms and conditions
+                  </label>
+                </div>
+                <div class="actions">
+                  <button class="btn" (click)="onSubmit()" [disabled]="theForm.invalid || disableSubmitBtn">
+                    @if (!disableSubmitBtn) {
+                      <span>Submit</span>
+                    }
+                    @if (disableSubmitBtn) {
+                      <div class="flex">
+                        <span class="spinner-border" role="status" aria-hidden="true"></span>
+                        <span class="sr-only ml-3">submutting...</span>
+                      </div>
+                    }
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
 </div>

@@ -1,26 +1,29 @@
-<div class="bids family-roboto" *ngIf="tender">
-	<div class="detail-page-upper-box">Bids prices for Tender #{{tender.tenderNumber}}</div> 
-
-	<div class="pricing-table">
-		<div class="content">
-			<table class="table">
-				<thead>
-					<tr>
-						<th>Company</th>
-						<th>Duration</th>
-						<th>Price</th>
-						<th>Status</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr class="collapsed" *ngFor="let bid of bids;">
-						<td>{{ bid.user.company ? bid.user.company.name : 'NA' }}</td>
-						<td>{{ bid.durationInNumbers }}</td>
-						<td>{{ bid.priceInNumbers }}</td>
-						<td [class]="bid.status?.toLowerCase()">{{ bid.status?.toString()?.replace('_', ' ') }}</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
-</div>
+@if (tender) {
+  <div class="bids family-roboto">
+    <div class="detail-page-upper-box">Bids prices for Tender #{{tender.tenderNumber}}</div>
+    <div class="pricing-table">
+      <div class="content">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Company</th>
+              <th>Duration</th>
+              <th>Price</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (bid of bids; track bid) {
+              <tr class="collapsed">
+                <td>{{ bid.user.company ? bid.user.company.name : 'NA' }}</td>
+                <td>{{ bid.durationInNumbers }}</td>
+                <td>{{ bid.priceInNumbers }}</td>
+                <td [class]="bid.status?.toLowerCase()">{{ bid.status?.toString()?.replace('_', ' ') }}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+}

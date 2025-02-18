@@ -1,67 +1,77 @@
 <div class="notifications family-roboto">
-	<div class="detail-page-upper-box" *ngIf="!inUserProfile">Your Notifications</div>
+  @if (!inUserProfile) {
+    <div class="detail-page-upper-box">Your Notifications</div>
+  }
 
-	<div class="generic-table" [class.in-profile]="inUserProfile">
-		<div class="header" *ngIf="notifications.length > 0 && !inUserProfile">
-			<div class="title-section">
-				<h2 class="mr-3 fg-primary title">Showing {{ totalRecords }} notifications </h2>
-				<div class="search-input-group">
-					<input class="search-field" type="text" placeholder="Search notification by type" [formControl]="searchFC">
-					<button class="btn btn-search">Search Notification</button>
-				</div>
-			</div>
-		</div>
-	
-		<div class="content">
-			<table class="table">
-				<thead>
-					<tr>
-						<th>Type</th>
-						<th>Content</th>
-						<th>Created At</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr *ngFor="let rec of notifications;">
-						<td>{{ rec.type }}</td>
-						<td>{{ rec.content }}</td>
-						<td>{{ rec.createdAt | date:'medium' }}</td>
-					</tr>
-	
-					<tr *ngIf="notifications.length === 0;">
-						<td colspan="5">No notification received yet.</td>
-					</tr>
-				</tbody>
-			</table>
+  <div class="generic-table" [class.in-profile]="inUserProfile">
+    @if (notifications.length > 0 && !inUserProfile) {
+      <div class="header">
+        <div class="title-section">
+          <h2 class="mr-3 fg-primary title">Showing {{ totalRecords }} notifications </h2>
+          <div class="search-input-group">
+            <input class="search-field" type="text" placeholder="Search notification by type" [formControl]="searchFC">
+            <button class="btn btn-search">Search Notification</button>
+          </div>
+        </div>
+      </div>
+    }
 
-			<div class="cards">
-				<div class="card" *ngFor="let rec of notifications;">
-					<div class="items-row">
-						<div class="item">
-							<div class="label">Type</div>
-							<div class="value text-center">{{ rec.type }}</div>
-						</div>
+    <div class="content">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Content</th>
+            <th>Created At</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (rec of notifications; track rec) {
+            <tr>
+              <td>{{ rec.type }}</td>
+              <td>{{ rec.content }}</td>
+              <td>{{ rec.createdAt | date:'medium' }}</td>
+            </tr>
+          }
 
-						<div class="item">
-							<div class="label">Created At</div>
-							<div class="value">{{ rec.createdAt | date:'medium' }}</div>
-						</div>
-					</div>
+          @if (notifications.length === 0;) {
+            <tr>
+              <td colspan="5">No notification received yet.</td>
+            </tr>
+          }
+        </tbody>
+      </table>
 
-					<div class="items-row justify-center">
-						<div class="item">
-							<div class="label text-center">Content</div>
-							<div class="value">{{ rec.content }}</div>
-						</div>
-					</div>
-				</div>
+      <div class="cards">
+        @for (rec of notifications; track rec) {
+          <div class="card">
+            <div class="items-row">
+              <div class="item">
+                <div class="label">Type</div>
+                <div class="value text-center">{{ rec.type }}</div>
+              </div>
+              <div class="item">
+                <div class="label">Created At</div>
+                <div class="value">{{ rec.createdAt | date:'medium' }}</div>
+              </div>
+            </div>
+            <div class="items-row justify-center">
+              <div class="item">
+                <div class="label text-center">Content</div>
+                <div class="value">{{ rec.content }}</div>
+              </div>
+            </div>
+          </div>
+        }
 
-				<div *ngIf="notifications.length === 0;">
-					No notification received yet.
-				</div>
-			</div>
+        @if (notifications.length === 0;) {
+          <div>
+            No notification received yet.
+          </div>
+        }
+      </div>
 
-			<app-pagination [limit]="limit" [totalRecords]="totalRecords" (pageChange)="onPageChange($event)"></app-pagination>
-		</div>
-	</div>
+      <app-pagination [limit]="limit" [totalRecords]="totalRecords" (pageChange)="onPageChange($event)"></app-pagination>
+    </div>
+  </div>
 </div>

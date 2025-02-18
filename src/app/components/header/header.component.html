@@ -1,118 +1,143 @@
 <nav class="navbar navbar-expand-lg sticky">
-	<div class="container-fluid h-100">
-		<div routerLink="/" class="logo-text">
-			<div class="text">
-				<div class="family-roboto">Doha Project Management</div>
-				<div class="logo-text-ar">الدوحة لادارة المشاريع</div>
-			</div>
-			<img src="/assets/images/logo.svg" class="logo" alt="DPM Logo">
-		</div>
-		
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-				data-bs-target="#navBar" aria-controls="navBar" aria-expanded="false" 
-				aria-label="Toggle navigation" (click)="toggleMenu()">
-			<span class="navbar-toggler-icon"></span>
-		</button>
+  <div class="container-fluid h-100">
+    <div routerLink="/" class="logo-text">
+      <div class="text">
+        <div class="family-roboto">Doha Project Management</div>
+        <div class="logo-text-ar">الدوحة لادارة المشاريع</div>
+      </div>
+      <img src="/assets/images/logo.svg" class="logo" alt="DPM Logo">
+    </div>
 
-		<div class="collapse navbar-collapse h-100" id="navBar">
-			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-				<li class="nav-item" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-					<a class="nav-link">الرئيسية</a>
-				</li>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navBar" aria-controls="navBar" aria-expanded="false"
+      aria-label="Toggle navigation" (click)="toggleMenu()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-				<li class="nav-item" routerLink="tenders" routerLinkActive="active" *ngIf="user">
-					<a class="nav-link">المناقصة</a>
-				</li>
+    <div class="collapse navbar-collapse h-100" id="navBar">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <a class="nav-link">الرئيسية</a>
+        </li>
 
-				<li class="nav-item" routerLink="projects" routerLinkActive="active" *ngIf="user && user.type === 'Client'">
-					<a class="nav-link family-roboto">My Projects</a>
-				</li>
+        @if (user) {
+          <li class="nav-item" routerLink="tenders" routerLinkActive="active">
+            <a class="nav-link">المناقصة</a>
+          </li>
+        }
 
-				<li class="nav-item" routerLink="notifications" routerLinkActive="active" *ngIf="user">
-					<a class="nav-link family-roboto">Notifications</a>
-				</li>
+        @if (user && user.type === 'Client') {
+          <li class="nav-item" routerLink="projects" routerLinkActive="active">
+            <a class="nav-link family-roboto">My Projects</a>
+          </li>
+        }
 
-				<li class="nav-item" routerLink="download_center" routerLinkActive="active" *ngIf="user && user.type !== 'Client'">
-					<a class="nav-link family-roboto">Download Center</a>
-				</li>
-				
-				<li class="nav-item" routerLink="terms" routerLinkActive="active">
-					<a class="nav-link">الشروط و الاحكام</a>
-				</li>
+        @if (user) {
+          <li class="nav-item" routerLink="notifications" routerLinkActive="active">
+            <a class="nav-link family-roboto">Notifications</a>
+          </li>
+        }
 
-				<li class="nav-item" routerLink="contact_us" routerLinkActive="active">
-					<a class="nav-link">تواصل معنا</a>
-				</li>
-			</ul>
+        @if (user && user.type !== 'Client') {
+          <li class="nav-item" routerLink="download_center" routerLinkActive="active">
+            <a class="nav-link family-roboto">Download Center</a>
+          </li>
+        }
 
-			<a href="https://wa.link/uys7ey" target="_blank" class="whatsapp-button" title="Chat with us on WhatsApp">
-				<img src="/assets/images/whatsapp-icon.webp" alt="WhatsApp" />
-			</a>
+        <li class="nav-item" routerLink="terms" routerLinkActive="active">
+          <a class="nav-link">الشروط و الاحكام</a>
+        </li>
 
-			<ul class="navbar-nav mb-2 mb-lg-0">
-				<li class="nav-item p-0" routerLink="login-type" *ngIf="!user; else loggedInUser">
-					<a class="btn btn-login mr-8">دخول</a>
-					<a class="btn btn-register">حساب جديد</a>
-				</li>
-			</ul>
-		</div>
-	</div>
+        <li class="nav-item" routerLink="contact_us" routerLinkActive="active">
+          <a class="nav-link">تواصل معنا</a>
+        </li>
+      </ul>
 
-	<a class="flex navbar-burger cursor-pointer self-center md:hidden" (click)="toggleMenu()">
-		<svg *ngIf="!showMobMenu" xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 hover:text-gray-200" fill="none"
-			viewBox="0 0 24 24" stroke="currentColor">
-			<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-		</svg>
+      <a href="https://wa.link/uys7ey" target="_blank" class="whatsapp-button" title="Chat with us on WhatsApp">
+        <img src="/assets/images/whatsapp-icon.webp" alt="WhatsApp" />
+      </a>
 
-		<svg *ngIf="showMobMenu" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10">
-			<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-		</svg>
-	</a>
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        @if (!user) {
+          <li class="nav-item p-0" routerLink="login-type">
+            <a class="btn btn-login mr-8">دخول</a>
+            <a class="btn btn-register">حساب جديد</a>
+          </li>
+        } @else {
+          <div class="profile" title="View Profile">
+            <div class="circle" routerLink="/profile">
+              <img src="/assets/images/avatar.jpg" alt="avatar" class="avatar">
+            </div>
+            <a role="button" class="btn btn-logout" (click)="onLogout()">خروج</a>
+          </div>
+        }
+      </ul>
+    </div>
+  </div>
 
-	<nav class="mobile-nav" *ngIf="showMobMenu" (click)="toggleMenu()">
-		<ul>
-			<li>
-				<a class="nav-link" routerLink="/">الرئيسية</a>
-			</li>
+  <a class="flex navbar-burger cursor-pointer self-center md:hidden" (click)="toggleMenu()">
+    @if (!showMobMenu) {
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 hover:text-gray-200" fill="none"
+        viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    }
 
-			<li *ngIf="user">
-				<a class="nav-link" routerLink="tenders">المناقصة</a>
-			</li>
+    @if (showMobMenu) {
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    }
+  </a>
 
-			<li *ngIf="user && user.type === 'Client'">
-				<a class="nav-link family-roboto" routerLink="projects">My projects</a>
-			</li>
+  @if (showMobMenu) {
+    <nav class="mobile-nav" (click)="toggleMenu()">
+      <ul>
+        <li>
+          <a class="nav-link" routerLink="/">الرئيسية</a>
+        </li>
+        @if (user) {
+          <li>
+            <a class="nav-link" routerLink="tenders">المناقصة</a>
+          </li>
+        }
+        @if (user && user.type === 'Client') {
+          <li>
+            <a class="nav-link family-roboto" routerLink="projects">My projects</a>
+          </li>
+        }
+        @if (user) {
+          <li>
+            <a class="nav-link family-roboto" routerLink="notifications">Notifications</a>
+          </li>
+        }
+        @if (user && user.type !== 'Client') {
+          <li>
+            <a class="nav-link family-roboto" routerLink="download_center">Download Center</a>
+          </li>
+        }
+        <li>
+          <a class="nav-link" routerLink="terms">الشروط و الاحكام</a>
+        </li>
+        <li>
+          <a class="nav-link" routerLink="contact_us">تواصل معنا</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        @if (!user) {
+          <li routerLink="login-type">
+            <a class="btn btn-login">دخول</a>
+          </li>
+        } @else {
+          <div class="profile" title="View Profile">
+            <div class="circle" routerLink="/profile">
+              <img src="/assets/images/avatar.jpg" alt="avatar" class="avatar">
+            </div>
+            <a role="button" class="btn btn-logout" (click)="onLogout()">خروج</a>
+          </div>
+        }
+      </ul>
+    </nav>
+  }
 
-			<li *ngIf="user">
-				<a class="nav-link family-roboto" routerLink="notifications">Notifications</a>
-			</li>
-
-			<li *ngIf="user && user.type !== 'Client'">
-				<a class="nav-link family-roboto" routerLink="download_center">Download Center</a>
-			</li>
-
-			<li>
-				<a class="nav-link" routerLink="terms">الشروط و الاحكام</a>
-			</li>
-
-			<li>
-				<a class="nav-link" routerLink="contact_us">تواصل معنا</a>
-			</li>
-		</ul>
-
-		<ul class="navbar-nav mb-2 mb-lg-0">
-			<li routerLink="login-type" *ngIf="!user; else loggedInUser">
-				<a class="btn btn-login">دخول</a>
-			</li>
-		</ul>
-	</nav>
-
-	<ng-template #loggedInUser>
-		<div class="profile" title="View Profile">
-			<div class="circle" routerLink="/profile">
-				<img src="/assets/images/avatar.jpg" alt="avatar" class="avatar">
-			</div>
-			<a role="button" class="btn btn-logout" (click)="onLogout()">خروج</a>
-		</div>
-	</ng-template>
 </nav>

@@ -1,62 +1,69 @@
 <div class="bidding">
-	<div class="flex justify-center" *ngIf="!message">
-		<form [formGroup]="theForm" class="form family-roboto">
-			<h2 class="heading">Bidding Price and Duration</h2>
-	
-			<div class="form-group col-sm-5">
-				<label for="durationInLetters">Duration In Letters</label>
-				<input id="durationInLetters" class="form-control" placeholder="Duration In Letters" formControlName="durationInLetters">
-	
-				<div class="alert alert-danger"
-					*ngIf="theForm.get('durationInLetters')?.touched && theForm.get('durationInLetters')?.hasError('required')">
-					Duration In Letters is required
-				</div>
-			</div>
-	
-			<div class="form-group col-sm-5">
-				<label for="durationInNumbers">Duration In Numbers</label>
-				<input type="number" id="durationInNumbers" class="form-control" placeholder="Duration In Numbers" formControlName="durationInNumbers">
-	
-				<div class="alert alert-danger"
-					*ngIf="theForm.get('durationInNumbers')?.touched && theForm.get('durationInNumbers')?.hasError('required')">
-					Duration In Numbers is required
-				</div>
-			</div>
-	
-			<div class="form-group col-sm-5">
-				<label for="priceInLetters">Price In Letters</label>
-				<input id="priceInLetters" class="form-control" placeholder="Price In Letters" formControlName="priceInLetters">
-	
-				<div class="alert alert-danger"
-					*ngIf="theForm.get('priceInLetters')?.touched && theForm.get('priceInLetters')?.hasError('required')">
-					Price In Letters is required
-				</div>
-			</div>
-	
-			<div class="form-group col-sm-5">
-				<label for="priceInNumbers">Price In Numbers</label>
-				<input type="number" id="priceInNumbers" class="form-control" placeholder="Price In Numbers" formControlName="priceInNumbers">
-	
-				<div class="alert alert-danger"
-					*ngIf="theForm.get('priceInNumbers')?.touched && theForm.get('priceInNumbers')?.hasError('required')">
-					Price In Numbers is required
-				</div>
-			</div>
-	
-			<div class="actions">
-				<button class="btn" (click)="onPlaceBid()" [disabled]="theForm.invalid || disableSubmitBtn">
-					<span *ngIf="!disableSubmitBtn">تسعير</span>
-					<div class="flex" *ngIf="disableSubmitBtn">
-						<span class="spinner-border" role="status" aria-hidden="true"></span>
-						<span class="sr-only ml-3">submutting...</span>
-					</div>
-				</button>
-			</div>
-		</form>
-	</div>
+  @if (!message) {
+    <div class="flex justify-center">
+      <form [formGroup]="theForm" class="form family-roboto">
+        <h2 class="heading">Bidding Price and Duration</h2>
+        <div class="form-group col-sm-5">
+          <label for="durationInLetters">Duration In Letters</label>
+          <input id="durationInLetters" class="form-control" placeholder="Duration In Letters" formControlName="durationInLetters">
+          @if (theForm.get('durationInLetters')?.touched && theForm.get('durationInLetters')?.hasError('required')) {
+            <div class="alert alert-danger"
+              >
+              Duration In Letters is required
+            </div>
+          }
+        </div>
+        <div class="form-group col-sm-5">
+          <label for="durationInNumbers">Duration In Numbers</label>
+          <input type="number" id="durationInNumbers" class="form-control" placeholder="Duration In Numbers" formControlName="durationInNumbers">
+          @if (theForm.get('durationInNumbers')?.touched && theForm.get('durationInNumbers')?.hasError('required')) {
+            <div class="alert alert-danger"
+              >
+              Duration In Numbers is required
+            </div>
+          }
+        </div>
+        <div class="form-group col-sm-5">
+          <label for="priceInLetters">Price In Letters</label>
+          <input id="priceInLetters" class="form-control" placeholder="Price In Letters" formControlName="priceInLetters">
+          @if (theForm.get('priceInLetters')?.touched && theForm.get('priceInLetters')?.hasError('required')) {
+            <div class="alert alert-danger"
+              >
+              Price In Letters is required
+            </div>
+          }
+        </div>
+        <div class="form-group col-sm-5">
+          <label for="priceInNumbers">Price In Numbers</label>
+          <input type="number" id="priceInNumbers" class="form-control" placeholder="Price In Numbers" formControlName="priceInNumbers">
+          @if (theForm.get('priceInNumbers')?.touched && theForm.get('priceInNumbers')?.hasError('required')) {
+            <div class="alert alert-danger"
+              >
+              Price In Numbers is required
+            </div>
+          }
+        </div>
+        <div class="actions">
+          <button class="btn" (click)="onPlaceBid()" [disabled]="theForm.invalid || disableSubmitBtn">
+            @if (!disableSubmitBtn) {
+              <span>تسعير</span>
+            }
+            @if (disableSubmitBtn) {
+              <div class="flex">
+                <span class="spinner-border" role="status" aria-hidden="true"></span>
+                <span class="sr-only ml-3">submutting...</span>
+              </div>
+            }
+          </button>
+        </div>
+      </form>
+    </div>
+  }
 
-	<div class="message-panel" *ngIf="message">
-		<h2>{{ message }}</h2>
-		<button class="btn-back" routerLink="/tenders">رجوع</button>
-	</div>
+  @if (message) {
+    <div class="message-panel">
+      <h2>{{ message }}</h2>
+      <button class="btn-back" routerLink="/tenders">رجوع</button>
+    </div>
+  }
 </div>

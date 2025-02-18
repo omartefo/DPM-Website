@@ -33,7 +33,13 @@
               "src/styles.scss",
 			        "node_modules/ngx-toastr/toastr.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "file-saver",
+              "bs-stepper",
+              "jszip",
+              "moment"
+            ]
           },
           "configurations": {
             "production": {
@@ -72,10 +78,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "dpm:build:production"
+              "buildTarget": "dpm:build:production"
             },
             "development": {
-              "browserTarget": "dpm:build:development"
+              "buildTarget": "dpm:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +89,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "dpm:build"
+            "buildTarget": "dpm:build"
           }
         },
         "test": {
