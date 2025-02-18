@@ -92,37 +92,39 @@
         </div>
         @if (tender) {
           <div class="actions">
-            @if (tender.remainingTime != 0
-              && tender.remainingTime != -1
-              && !tender.bid
-              && (user && ['Consultant', 'Contractor', 'Supplier'].includes(user.type))) {
-              <button
-                class="btn btn-primary mr-3" (click)="onParticipate(tender)" [disabled]="disableBtn">
-                @if (!disableBtn) {
-                  <span>مشاركة</span>
-                }
-                @if (disableBtn) {
-                  <div class="flex">
-                    <span class="spinner-border"></span>
-                    <span class="sr-only ml-3">submutting...</span>
-                  </div>
-                }
-              </button>
-            }
-            @if (
-              (tender.bid && tender.bid.status == null)
-              && tender.canBid
-              && tender.remainingTime != 0
-              && (user && ['Consultant', 'Contractor', 'Supplier'].includes(user.type))) {
-              <button
-                class="btn btn-primary mr-3" (click)="onParticipate(tender)">
-                تسعير
-              </button>
-            }
-            @if (tender.remainingTime === 0 && tender.bid.status) {
-              <button class="btn btn-primary mr-3"
-                (click)="onViewPricing(tender)">قائمة الاسعار للمشاركين
-              </button>
+            @if (user?.canParticipateInTenders) {
+              @if (tender.remainingTime != 0
+                && tender.remainingTime != -1
+                && !tender.bid
+                && (user && ['Consultant', 'Contractor', 'Supplier'].includes(user.type))) {
+                <button
+                  class="btn btn-primary mr-3" (click)="onParticipate(tender)" [disabled]="disableBtn">
+                  @if (!disableBtn) {
+                    <span>مشاركة</span>
+                  }
+                  @if (disableBtn) {
+                    <div class="flex">
+                      <span class="spinner-border"></span>
+                      <span class="sr-only ml-3">submutting...</span>
+                    </div>
+                  }
+                </button>
+              }
+              @if (
+                (tender.bid && tender.bid.status == null)
+                && tender.canBid
+                && tender.remainingTime != 0
+                && (user && ['Consultant', 'Contractor', 'Supplier'].includes(user.type))) {
+                <button
+                  class="btn btn-primary mr-3" (click)="onParticipate(tender)">
+                  تسعير
+                </button>
+              }
+              @if (tender.remainingTime === 0 && tender.bid.status) {
+                <button class="btn btn-primary mr-3"
+                  (click)="onViewPricing(tender)">قائمة الاسعار للمشاركين
+                </button>
+              }
             }
             <button class="btn btn-back" routerLink="/tenders">رجوع</button>
           </div>

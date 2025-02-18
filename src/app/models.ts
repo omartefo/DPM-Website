@@ -19,6 +19,7 @@ export interface UserInfo {
 	email: string;
 	mobileNumber: string;
 	type: LoginAccountType;
+	canParticipateInTenders: boolean;
 	bids: Bid[];
 	company: UserCompany;
 }
