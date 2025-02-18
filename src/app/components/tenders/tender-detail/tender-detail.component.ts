@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import * as JSZip from 'jszip';
-import * as moment from 'moment';
+import JSZip from 'jszip';
+import moment from 'moment';
 import { FileSaverService } from 'ngx-filesaver';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription, timer } from 'rxjs';
@@ -159,7 +159,7 @@ export class TenderDetailComponent implements OnInit {
 			folder?.file(name, blobPromise)
 		})
 		
-		zip.generateAsync({ type:"blob" }).then(content => {
+		zip.generateAsync({ type:"blob" }).then((content: Blob) => {
 			this.fileSaverService.save(content, 'tenderFiles.zip');
 		});
 	}

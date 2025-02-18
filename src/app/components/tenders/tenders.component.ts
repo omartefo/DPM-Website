@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import * as moment from 'moment';
+import moment from 'moment';
 import { ToastrService } from 'ngx-toastr';
 import { debounceTime, distinctUntilChanged, Subscription, timer } from 'rxjs';
 

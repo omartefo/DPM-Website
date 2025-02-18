@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import * as JSZip from 'jszip';
+import JSZip from 'jszip';
 import { FileSaverService } from 'ngx-filesaver';
 import { ToastrService } from 'ngx-toastr';
 import { GenericApiResponse } from 'src/app/models';
@@ -56,7 +56,7 @@ export class DownloadCenterComponent implements OnInit {
 			folder?.file(name, blobPromise)
 		})
 		
-		zip.generateAsync({ type:"blob" }).then(content => {
+		zip.generateAsync({ type:"blob" }).then((content: Blob) => {
 			this.fileSaverService.save(content, 'downloads.zip');
 		});
 	}
