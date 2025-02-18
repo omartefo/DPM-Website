@@ -53,7 +53,7 @@ export class TendersComponent implements OnInit, OnDestroy {
 				for (let tender of this.tenders) 
 				{
 					const t = timer(0, 1000);
-					const subs = t.subscribe(() => this.setRemainingTime(tender, subs));
+					const subs: Subscription = t.subscribe(() => this.setRemainingTime(tender, subs));
 					this.subscriptions.push(subs);
 				}
 			},
