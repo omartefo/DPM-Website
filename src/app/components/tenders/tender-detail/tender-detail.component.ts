@@ -116,7 +116,6 @@ export class TenderDetailComponent implements OnInit {
 		{
 			const payload = {
 				tenderId: this.tender.tenderId,
-				userId: this.user?.userId
 			};
 
 			this.apiService.post('/bids', payload).subscribe({
