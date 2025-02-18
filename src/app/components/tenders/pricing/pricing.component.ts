@@ -8,9 +8,10 @@ import { GenericApiResponse } from 'src/app/models';
 
 
 @Component({
-  selector: 'app-pricing',
-  templateUrl: './pricing.component.html',
-  styleUrls: ['./pricing.component.scss']
+    selector: 'app-pricing',
+    templateUrl: './pricing.component.html',
+    styleUrls: ['./pricing.component.scss'],
+    standalone: false
 })
 export class PricingComponent implements OnInit {
 	tenderId!: number;

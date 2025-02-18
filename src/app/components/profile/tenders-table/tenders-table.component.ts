@@ -5,9 +5,10 @@ import { ApiService } from 'src/app/services/api.service';
 
 
 @Component({
-  selector: 'app-tenders-table',
-  templateUrl: './tenders-table.component.html',
-  styleUrls: ['./tenders-table.component.scss']
+    selector: 'app-tenders-table',
+    templateUrl: './tenders-table.component.html',
+    styleUrls: ['./tenders-table.component.scss'],
+    standalone: false
 })
 export class TendersTableComponent implements OnInit {
 	tenders: Tender[] = [];

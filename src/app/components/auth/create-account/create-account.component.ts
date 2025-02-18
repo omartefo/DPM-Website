@@ -10,9 +10,10 @@ import { UserConfig } from 'src/app/common/constants/constants';
 
 
 @Component({
-  selector: 'app-create-account',
-  templateUrl: './create-account.component.html',
-  styleUrls: ['./create-account.component.scss']
+    selector: 'app-create-account',
+    templateUrl: './create-account.component.html',
+    styleUrls: ['./create-account.component.scss'],
+    standalone: false
 })
 export class CreateAccountComponent implements OnInit, AfterViewInit {
 	@ViewChild('stepper') stepperElement!: ElementRef<HTMLElement>;

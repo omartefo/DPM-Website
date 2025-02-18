@@ -10,9 +10,10 @@ import { ApiService } from 'src/app/services/api.service';
 
 
 @Component({
-  selector: 'app-tenders',
-  templateUrl: './tenders.component.html',
-  styleUrls: ['./tenders.component.scss']
+    selector: 'app-tenders',
+    templateUrl: './tenders.component.html',
+    styleUrls: ['./tenders.component.scss'],
+    standalone: false
 })
 export class TendersComponent implements OnInit, OnDestroy {
 	tenders: Tender[] = [];

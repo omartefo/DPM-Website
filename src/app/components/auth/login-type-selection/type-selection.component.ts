@@ -4,9 +4,10 @@ import { LoginType } from 'src/app/models';
 
 
 @Component({
-  selector: 'login-type-selection',
-  templateUrl: './type-selection.component.html',
-  styleUrls: ['./type-selection.component.scss']
+    selector: 'login-type-selection',
+    templateUrl: './type-selection.component.html',
+    styleUrls: ['./type-selection.component.scss'],
+    standalone: false
 })
 export class LoginTypeSelectionComponent {
 	loginTypes: LoginType[];

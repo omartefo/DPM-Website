@@ -6,9 +6,10 @@ import { ApiService } from 'src/app/services/api.service';
 
 
 @Component({
-  selector: 'app-contact-us',
-  templateUrl: './contact-us.component.html',
-  styleUrls: ['./contact-us.component.scss']
+    selector: 'app-contact-us',
+    templateUrl: './contact-us.component.html',
+    styleUrls: ['./contact-us.component.scss'],
+    standalone: false
 })
 export class ContactUsComponent {
 	theForm: FormGroup;

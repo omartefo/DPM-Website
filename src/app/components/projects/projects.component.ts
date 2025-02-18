@@ -8,9 +8,10 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { debounceTime, distinctUntilChanged } from 'rxjs';
 
 @Component({
-  selector: 'app-projects',
-  templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.scss']
+    selector: 'app-projects',
+    templateUrl: './projects.component.html',
+    styleUrls: ['./projects.component.scss'],
+    standalone: false
 })
 export class ProjectsComponent implements OnInit {
 	@Input() inUserProfile = false;

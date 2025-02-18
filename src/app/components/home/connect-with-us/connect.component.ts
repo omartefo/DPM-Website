@@ -3,9 +3,10 @@ import { Component } from '@angular/core';
 
 
 @Component({
-  selector: 'app-connect-with-us',
-  templateUrl: './connect.component.html',
-  styleUrls: ['./connect.component.scss']
+    selector: 'app-connect-with-us',
+    templateUrl: './connect.component.html',
+    styleUrls: ['./connect.component.scss'],
+    standalone: false
 })
 export class ConnectWithUsComponent {
 	email = new FormControl('');

@@ -7,9 +7,10 @@ import { ApiService } from 'src/app/services/api.service';
 
 
 @Component({
-  selector: 'app-download-center',
-  templateUrl: './download-center.component.html',
-  styleUrls: ['./download-center.component.scss']
+    selector: 'app-download-center',
+    templateUrl: './download-center.component.html',
+    styleUrls: ['./download-center.component.scss'],
+    standalone: false
 })
 export class DownloadCenterComponent implements OnInit {
 	@Input() inUserProfile = false;

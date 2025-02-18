@@ -10,9 +10,10 @@ import { ApiService } from 'src/app/services/api.service';
 
 
 @Component({
-  selector: 'app-tender-detail',
-  templateUrl: './tender-detail.component.html',
-  styleUrls: ['./tender-detail.component.scss']
+    selector: 'app-tender-detail',
+    templateUrl: './tender-detail.component.html',
+    styleUrls: ['./tender-detail.component.scss'],
+    standalone: false
 })
 export class TenderDetailComponent implements OnInit {
 	tenderId: number;

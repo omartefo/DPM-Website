@@ -3,9 +3,10 @@ import * as _ from 'underscore';
 
 
 @Component({
-  selector: 'app-pagination',
-  templateUrl: './pagination.component.html',
-  styleUrls: ['./pagination.component.scss']
+    selector: 'app-pagination',
+    templateUrl: './pagination.component.html',
+    styleUrls: ['./pagination.component.scss'],
+    standalone: false
 })
 export class PaginationComponent implements OnChanges {
 	@Input() totalRecords = 0;

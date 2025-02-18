@@ -8,9 +8,10 @@ import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
-  selector: 'app-add-project',
-  templateUrl: './add-project.component.html',
-  styleUrls: ['./add-project.component.scss']
+    selector: 'app-add-project',
+    templateUrl: './add-project.component.html',
+    styleUrls: ['./add-project.component.scss'],
+    standalone: false
 })
 export class AddProjectComponent {
 	theForm: FormGroup;
