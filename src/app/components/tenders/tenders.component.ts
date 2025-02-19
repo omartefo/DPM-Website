@@ -48,8 +48,9 @@ export class TendersComponent implements OnInit, OnDestroy {
 
 		this.apiService.get(slug).subscribe({
 			next: (resp: GenericApiResponse) => {
-				this.tenders = resp.data.tenders;
-				this.totalRecords = resp.totalRecords;
+				const { rows, count } = resp.data.tenders;
+				this.tenders = rows;
+				this.totalRecords = count;
 
 				for (let tender of this.tenders) 
 				{
