@@ -92,11 +92,10 @@
         </div>
         @if (tender) {
           <div class="actions">
-            @if (user?.canParticipateInTenders) {
+            @if ((user?.type === 'Contractor' && user?.canParticipateInTenders) || (user && ['Consultant', 'Supplier'].includes(user.type))) {
               @if (tender.remainingTime != 0
                 && tender.remainingTime != -1
-                && !tender.bid
-                && (user && ['Consultant', 'Contractor', 'Supplier'].includes(user.type))) {
+                && !tender.bid) {
                 <button
                   class="btn btn-primary mr-3" (click)="onParticipate(tender)" [disabled]="disableBtn">
                   @if (!disableBtn) {
