@@ -1,9 +1,8 @@
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { AuthService } from 'src/app/services/auth.service';
 import { ApiService } from 'src/app/services/api.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Component } from '@angular/core';
 
 
 @Component({
@@ -19,11 +18,10 @@ export class BiddingFormComponent {
 	message: string = '';
 	disableSubmitBtn = false;
 
-	constructor(private fb: FormBuilder,
+	constructor(fb: FormBuilder,
+				route: ActivatedRoute,
 				private toaster: ToastrService,
-				private route: ActivatedRoute,
-				private apiService: ApiService, 
-				private authService: AuthService) 
+				private apiService: ApiService) 
 	{
 		this.theForm = fb.group({
 			durationInLetters: ['', [Validators.required]],
@@ -54,7 +52,6 @@ export class BiddingFormComponent {
 		}
 		else {
 			payload.tenderId = this.tenderId;
-			payload.userId = this.authService.userInfo.value?.userId;
 			
 			this.apiService.post('/bids', payload).subscribe({
 				next: () => {
