@@ -14,13 +14,20 @@
           }
         </div>
         <div class="form-group col-sm-5">
-          <label for="durationInNumbers">Duration In Numbers</label>
+          <label for="durationInNumbers">Duration In Numbers (months)</label>
           <input type="number" id="durationInNumbers" class="form-control" placeholder="Duration In Numbers" formControlName="durationInNumbers">
-          @if (theForm.get('durationInNumbers')?.touched && theForm.get('durationInNumbers')?.hasError('required')) {
-            <div class="alert alert-danger"
-              >
-              Duration In Numbers is required
-            </div>
+          @if (theForm.get('durationInNumbers')?.touched && theForm.get('durationInNumbers')?.errors) {
+            @if (theForm.get('durationInNumbers')?.hasError('required')) {
+              <div class="alert alert-danger">
+                Duration In Numbers is required
+              </div>
+            }
+
+            @if (theForm.get('durationInNumbers')?.hasError('max')) {
+              <div class="alert alert-danger">
+                Duration should be 2 digits
+              </div>
+            }
           }
         </div>
         <div class="form-group col-sm-5">

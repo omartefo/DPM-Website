@@ -25,7 +25,7 @@ export class BiddingFormComponent {
 	{
 		this.theForm = fb.group({
 			durationInLetters: ['', [Validators.required]],
-			durationInNumbers: ['', [Validators.required]],
+			durationInNumbers: ['', [Validators.required, Validators.max(99)]],
 			priceInLetters: ['', [Validators.required]],
 			priceInNumbers: ['', [Validators.required]],
 		});
