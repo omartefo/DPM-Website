@@ -60,7 +60,7 @@ export interface Tender {
 	status: 'Open' | 'Under Evaluation';
 	submitting: boolean;
 	canBid: boolean;
-	bid: Bid;
+	bid?: Bid;
 	noOfParticipants: number;
 }
 

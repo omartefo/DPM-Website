@@ -22,6 +22,7 @@ export class TenderDetailComponent implements OnInit {
 	message: string = '';
 	subscription!: Subscription;
 	disableBtn = false;
+	isDownloadingDocs = false;
 
 	constructor(private route: ActivatedRoute, 
 				private router: Router,
@@ -146,22 +147,37 @@ export class TenderDetailComponent implements OnInit {
 
     getFileName = (path: string) => path.substring(path.lastIndexOf('/')+1);
 
-	onDownload(): void {
-		const zip = new JSZip()
-		const folder = zip.folder('tender_files');
+	async onDownload() {
+		try {
+			this.isDownloadingDocs = true;
+			const zip = new JSZip();
+			const folder = zip.folder('tender_files');
 
-		this.tender.documents.forEach((doc: string)=> {
-			const blobPromise = fetch(doc).then(r => {
-				if (r.status === 200) return r.blob()
-				return Promise.reject(new Error(r.statusText))
-			})
-			const name = doc.substring(doc.lastIndexOf('/'))
-			folder?.file(name, blobPromise)
-		})
-		
-		zip.generateAsync({ type:"blob" }).then((content: Blob) => {
-			this.fileSaverService.save(content, 'tenderFiles.zip');
-		});
+			for (const doc of this.tender.documents) {
+				try {
+					const docFetchResp = await fetch(doc);
+	
+					if (!docFetchResp.ok) {
+						throw new Error(docFetchResp.statusText);
+					}
+	
+					const blobResp = await docFetchResp.blob();
+					const name = doc.substring(doc.lastIndexOf('/'));
+					folder?.file(name, blobResp);
+				}
+				catch(error: any) {
+					console.error(`Error fetching document: ${doc}`, error);
+					throw new Error(error);
+				}
+			}
+
+			const content = await zip.generateAsync({ type: 'blob' });
+        	this.fileSaverService.save(content, 'tenderFiles.zip');
+			this.isDownloadingDocs = false;
+		}
+		catch(error) {
+			console.error('Error creating ZIP file:', error);
+		}
 	}
 
 	scrollToTop(): void {

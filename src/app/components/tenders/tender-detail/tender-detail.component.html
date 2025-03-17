@@ -82,7 +82,16 @@
                 @if (tender.documents.length === 1) {
                   <a [href]="tender.documents[0]" download>download</a>
                 } @else {
-                  <a class="underlined" (click)="onDownload()">download</a>
+                  <a class="underlined" (click)="onDownload()">
+                    @if (isDownloadingDocs) {
+                      <div class="spinner-border text-primary">
+                        <span class="visually-hidden">Loading...</span>
+                      </div>
+                    }
+                    @else {
+                      <span>Download</span>
+                    }
+                  </a>
                 }
               } @else {
                 NA
@@ -119,7 +128,7 @@
                   تسعير
                 </button>
               }
-              @if (tender.remainingTime === 0 && tender.bid.status) {
+              @if (tender.remainingTime === 0 && tender.bid?.status) {
                 <button class="btn btn-primary mr-3"
                   (click)="onViewPricing(tender)">قائمة الاسعار للمشاركين
                 </button>
