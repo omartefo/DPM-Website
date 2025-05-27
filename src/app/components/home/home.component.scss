@@ -4,6 +4,9 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		background-image: url('../../../assets/images/doha_view2.png');
+		background-size: cover;
+		background-position: center;
 
 		@media screen and (max-width: 1000px) {
 			flex-direction: column;
@@ -39,6 +42,7 @@
 				color: #11142D;
 				font-weight: 600;
 				margin-bottom: 10rem;
+				color: transparent;
 
 				@media screen and (max-width: 600px) {
 					margin-bottom: 5rem;
@@ -183,13 +187,15 @@
 		font-size: 4rem;
 		font-weight: 600;
 		color: var(--color-black);
+		color: transparent;
 	}
-
+	
 	.heading-primary {
 		text-align: center;
 		font-size: 5rem;
 		font-weight: 600;
 		color: var(--color-primary);
+		color: transparent;
 		margin-bottom: 2rem;
 
 		@media screen and (max-width: 600px) {
