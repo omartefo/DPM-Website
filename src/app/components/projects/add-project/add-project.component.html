@@ -19,13 +19,16 @@
     </div>
 
     <div class="form-group">
-      <label for="name">Location</label>
+      <label for="location">Location</label>
+      <input id="location" class="form-control" placeholder="Enter Location" formControlName="location">
 
-      <select name="location" id="location" formControlName="location">
-        @for (loc of projectLocations; track loc) {
-          <option [value]="loc">{{ loc }}</option>
-        }
-      </select>
+      @if (theForm.get('location')?.touched && theForm.get('location')?.invalid) {
+        <div class="alert alert-danger">
+          @if (theForm.get('location')?.hasError('required')) {
+            <div>Location is required</div>
+          }
+        </div>
+      }
     </div>
 
     <div class="form-group">

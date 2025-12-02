@@ -1,10 +1,9 @@
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
-import { ApiService } from 'src/app/services/api.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { GenericApiResponse } from './../../../models';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
+import { ApiService } from 'src/app/services/api.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -16,7 +15,6 @@ import { ToastrService } from 'ngx-toastr';
 export class AddProjectComponent {
 	theForm: FormGroup;
 	projectTypes: string[] = ['Villa', 'Commercial Building', 'Industrial Project'];
-	projectLocations: string[] = ['Doha', 'Al Rayyan', 'Umm Salal', 'Al Khor & Al Thakira', 'Al Wakrah', 'Al Daayen', 'Al Shamal, and Al Shahaniya'];
 	modalRef!: BsModalRef;
 
 	constructor(private fb: FormBuilder,
