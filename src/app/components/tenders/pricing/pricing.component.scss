@@ -34,12 +34,72 @@
 			}
 		}
 
-		.not_qualified {
-			color: red;
+		.status-badge {
+			padding: 0.4rem 1.2rem;
+			border-radius: 20px;
+			font-size: 1.3rem;
+			font-weight: 600;
+			text-transform: capitalize;
+			display: inline-block;
 		}
-	
-		.qualified {
-			color: green;
+
+		.badge-in-range {
+			background-color: #d4edda;  // light green
+			color: #155724;             // dark green
+		}
+
+		.badge-out-range {
+			background-color: #f8d7da;  // light red
+			color: #721c24;             // dark red
+		}
+
+		.badge-default {
+			background-color: #e2e3e5;
+			color: #41464b;
+		}
+
+		.bids-pagination {
+			border-top: 1px solid #f0e2d4; // light line to separate from table
+			padding-top: 1.5rem;
+		}
+
+		.pagination-size {
+			font-size: 1.6rem;
+		}
+
+		.custom-pagination {
+			.page-link {
+				border-radius: 999px;
+				border: 1px solid #e4d3c3; // soft beige border
+				color: #6b4a2b;            // brown text (matches header)
+				background-color: #ffffff;
+				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+				font-weight: 500;
+				min-width: 2.2rem;
+				text-align: center;
+				padding: 0.25rem 0.75rem;
+
+				&:hover {
+					background-color: #f7ece0; // very light brown
+					color: #4b2f18;
+					border-color: #d2b089;
+				}
+			}
+
+			.page-item.active .page-link {
+				background-color: #b67b4b; // main DPM brown
+				border-color: #b67b4b;
+				color: #ffffff;
+				box-shadow: 0 3px 8px rgba(182, 123, 75, 0.4);
+			}
+
+			.page-item.disabled .page-link {
+				color: #c0b0a1;
+				background-color: #f9f4ee;
+				border-color: #eadbcc;
+				box-shadow: none;
+				cursor: default;
+			}
 		}
 	}
 }

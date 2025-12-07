@@ -18,7 +18,11 @@
                 <td>{{ bid.user.company ? bid.user.company.name : 'NA' }}</td>
                 <td>{{ bid.durationInNumbers }}</td>
                 <td>{{ bid.priceInNumbers }}</td>
-                <td [class]="bid.status">{{ bid.status }}</td>
+                <td>
+                  <span class="status-badge" [ngClass]="getStatusClass(bid.status)">
+                    {{ bid.status }}
+                  </span>
+                </td>
               </tr>
             }
           </tbody>
