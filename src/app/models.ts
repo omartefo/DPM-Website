@@ -54,9 +54,12 @@ export interface Tender {
 	minutes: number;
 	seconds: number;
 	
-	remainingTime: string | 0 | -1;			// remainingTime = '2 Days, 10 hours'
-											// remainingTime = 0 if tender is closed
-											// remainingTime = -1 if tender is not started yet.
+	/*
+		remainingTime = '2 Days, 10 hours'
+		remainingTime = 0 if tender is closed
+		remainingTime = -1 if tender is not started yet.
+	*/
+	remainingTime: string | 0 | -1;
 	status: 'Open' | 'Under Evaluation';
 	submitting: boolean;
 	canBid: boolean;
@@ -70,7 +73,7 @@ export interface Bid {
 	user: UserInfo;
 	durationInNumbers: number;
 	priceInNumbers: number;
-	status: 'Qualified' | 'Not_Qualified' | null;
+	status: string;
 }
 
 export interface UserCompany {

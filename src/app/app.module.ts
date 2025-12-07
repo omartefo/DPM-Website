@@ -1,7 +1,7 @@
 // Angular core modules
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -89,7 +89,8 @@ import { TermsComponent } from './components/terms/terms.component';
 		ReactiveFormsModule,
 		ToastrModule.forRoot(),
 		ModalModule.forRoot(),
-		FileSaverModule
+		FileSaverModule,
+		FormsModule,
 	],
 	providers: [
 		provideHttpClient(withInterceptorsFromDi())
